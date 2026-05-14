@@ -1,18 +1,23 @@
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from '../../LangContext'
 import { useProjects } from '../../hooks/useProjects'
 import ProjectCard from './ProjectCard'
 import './PortfolioSection.css'
 
+const INITIAL_STANDARDS = 4
+
 export default function PortfolioSection() {
   const { t } = useLang()
   const { projects, loading } = useProjects()
-  const navigate = useNavigate()
+  const [expanded, setExpanded] = useState(false)
 
-  const featured  = projects.filter(p => p.layout === 'featured')
-  const standards = projects.filter(p => p.layout === 'standard' || !p.layout)
-  const compacts  = projects.filter(p => p.layout === 'compact')
+  const featured     = projects.filter(p => p.layout === 'featured')
+  const allStandards = projects.filter(p => p.layout === 'standard' || !p.layout)
+  const compacts     = projects.filter(p => p.layout === 'compact')
+
+  const hasMore   = allStandards.length > INITIAL_STANDARDS || compacts.length > 0
+  const standards = expanded ? allStandards : allStandards.slice(0, INITIAL_STANDARDS)
 
   return (
     <section id="portfolio" className="section portfolio-section">
@@ -55,44 +60,53 @@ export default function PortfolioSection() {
               </div>
             )}
 
-            {/* Compact list */}
-            {compacts.length > 0 && (
-              <div className="ps-compact-section">
-                <motion.p
-                  className="ps-compact-label"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
+            {/* Expanded reveal: extra standards + compacts */}
+            <AnimatePresence initial={false}>
+              {expanded && (
+                <motion.div
+                  key="expanded"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ overflow: 'hidden' }}
                 >
-                  More projects
-                </motion.p>
-                <div className="ps-compact-list">
-                  {compacts.map((p, i) => (
-                    <ProjectCard key={p.id} project={p} delay={i * 0.08} />
-                  ))}
-                </div>
-              </div>
-            )}
+                  <div className="ps-layout">
+                    {compacts.length > 0 && (
+                      <div className="ps-compact-section">
+                        <p className="ps-compact-label">More projects</p>
+                        <div className="ps-compact-list">
+                          {compacts.map((p, i) => (
+                            <ProjectCard key={p.id} project={p} delay={i * 0.08} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
 
-        {/* See all */}
-        <motion.div
-          className="ps-footer"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <button
-            className="outline-btn"
-            onClick={() => navigate('/projects')}
+        {/* See all / Show less */}
+        {hasMore && (
+          <motion.div
+            className="ps-footer"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
           >
-            <span className="btn-text">{t.portfolio.seeAll}</span>
-            <span className="btn-arrow">↗</span>
-          </button>
-        </motion.div>
+            <button
+              className="outline-btn"
+              onClick={() => setExpanded(e => !e)}
+            >
+              <span className="btn-text">{expanded ? 'Show less' : t.portfolio.seeAll}</span>
+              <span className="btn-arrow">{expanded ? '↑' : '↓'}</span>
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   )
