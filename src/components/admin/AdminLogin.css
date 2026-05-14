@@ -1,0 +1,70 @@
+.al-wrap {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: #f5f5f5;
+}
+
+.al-card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 48px 44px;
+  width: 360px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+  text-align: center;
+}
+
+.al-card.shake {
+  animation: shake 0.4s cubic-bezier(0.36,0.07,0.19,0.97);
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60% { transform: translateX(6px); }
+}
+
+.al-logo {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 2rem; font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.al-title {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.al-sub { font-size: 0.88rem; color: #888; margin-bottom: 32px; }
+
+.al-form { display: flex; flex-direction: column; gap: 12px; }
+
+.al-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.93rem; color: var(--text);
+  outline: none; background: none;
+  transition: border-color 0.2s;
+}
+
+.al-input:focus { border-color: var(--accent); }
+.al-input--error { border-color: #ff4444; }
+
+.al-error { font-size: 0.82rem; color: #ff4444; text-align: left; margin-top: -4px; }
+
+.al-btn {
+  padding: 13px;
+  background: var(--accent); color: white;
+  border: none; border-radius: 10px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.al-btn:hover { opacity: 0.85; transform: translateY(-1px); }

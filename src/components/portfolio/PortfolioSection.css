@@ -1,0 +1,39 @@
+.portfolio-section { background: var(--bg); }
+
+.ps-layout { display: flex; flex-direction: column; gap: 40px; }
+.ps-featured-row { display: flex; flex-direction: column; gap: 24px; }
+
+.ps-standard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.ps-compact-section { display: flex; flex-direction: column; gap: 14px; }
+
+.ps-compact-label {
+  font-size: 0.75rem; font-weight: 600;
+  color: #aaa; letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.ps-compact-list { display: flex; flex-direction: column; gap: 12px; }
+.ps-footer { display: flex; justify-content: center; margin-top: 52px; }
+
+.ps-loading { display: flex; flex-direction: column; gap: 24px; }
+
+.ps-skeleton {
+  height: 280px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f2f2f2 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 640px) { .ps-standard-grid { grid-template-columns: 1fr; } }

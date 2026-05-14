@@ -1,22 +1,46 @@
 .footer {
-  border-top: 1px solid var(--border);
-  padding: 32px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 28px 0;
 }
 
 .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 24px;
 }
 
-.footer-name {
-  font-weight: 700;
-  font-size: 1.1rem;
+.footer-logo {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -1px;
+  margin-right: auto;
 }
 
-.footer-copy {
-  font-size: 0.82rem;
-  color: var(--muted);
+.footer-nav { display: flex; gap: 28px; }
+
+.footer-nav a {
+  font-size: 0.88rem;
+  color: var(--text);
+  transition: color 0.2s;
 }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-copy { font-size: 0.82rem; color: var(--muted); }
+
+.footer-insta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: 8px;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.3s var(--ease-spring);
+}
+.footer-insta:hover { border-color: var(--text); transform: scale(1.08); }

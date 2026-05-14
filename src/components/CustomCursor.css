@@ -1,0 +1,140 @@
+/* ── Hide system cursor ──────────────────────────────────────────────────── */
+.custom-cursor-active *,
+.custom-cursor-active *::before,
+.custom-cursor-active *::after {
+  cursor: none !important;
+}
+
+/* ── Root container ──────────────────────────────────────────────────────── */
+.cur-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+/* ── Ghost trail ─────────────────────────────────────────────────────────── */
+.cur-trail {
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ── Outer ring ──────────────────────────────────────────────────────────── */
+.cur-ring {
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.45);
+  background: transparent;
+  will-change: transform, width, height, border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    background-color 0.22s ease,
+    border-color     0.22s ease,
+    box-shadow       0.25s ease,
+    opacity          0.3s  ease;
+}
+
+/* ── Center label ────────────────────────────────────────────────────────── */
+.cur-label {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ── Center dot ──────────────────────────────────────────────────────────── */
+.cur-dot {
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 4px;
+  background: #111;
+  border-radius: 999px;
+  will-change: transform;
+  opacity: 0;
+  box-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    opacity          0.2s ease;
+}
+
+/* ── State: btn (pill) ───────────────────────────────────────────────────── */
+.cur-ring[data-state="btn"] {
+  border-color: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.03);
+}
+
+/* ── State: card (dark rounded square with label) ────────────────────────── */
+.cur-ring[data-state="card"] {
+  background: rgba(10,10,10,0.9);
+  border-color: rgba(10,10,10,0.95);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.cur-ring[data-state="card"] .cur-label { opacity: 1; }
+
+/* ── State: text (thin vertical bar) ────────────────────────────────────── */
+.cur-ring[data-state="text"] {
+  background: rgba(0,0,0,0.6);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* ── State: img (accent glow ring) ──────────────────────────────────────── */
+.cur-ring[data-state="img"] {
+  background: transparent;
+  border-color: rgba(59,59,255,0.55);
+  box-shadow:
+    0 0 0 1px rgba(59,59,255,0.15),
+    0 0 20px rgba(59,59,255,0.25),
+    inset 0 0 12px rgba(59,59,255,0.06);
+}
+
+/* ── State: drag ─────────────────────────────────────────────────────────── */
+.cur-ring[data-state="drag"] {
+  border-color: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.04);
+}
+
+/* ── Press feedback ──────────────────────────────────────────────────────── */
+.cur-ring--press {
+  filter: brightness(1.3) !important;
+  transition:
+    filter 0.08s ease,
+    background-color 0.22s ease,
+    border-color     0.22s ease,
+    box-shadow       0.25s ease,
+    opacity          0.3s  ease !important;
+}
+
+.cur-dot--press {
+  background: #000 !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4) !important;
+  transition:
+    background-color 0.08s ease,
+    box-shadow       0.08s ease,
+    opacity          0.2s ease !important;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .cur-root { display: none; }
+}

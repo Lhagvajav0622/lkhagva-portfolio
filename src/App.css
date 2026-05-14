@@ -1,36 +1,72 @@
-.section {
-  padding: 100px 0;
-}
+.section { padding: 120px 0; }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
 }
 
-.section-header {
-  margin-bottom: 56px;
-}
+.section-header { margin-bottom: 64px; }
+.section-header.centered { text-align: center; }
+.section-header.centered .section-pill { margin: 0 auto 20px; }
 
-.section-label {
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 30px;
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent2);
-  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
 }
 
-.section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+.section-title-serif {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
   font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.15;
-  margin-bottom: 12px;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  color: var(--text);
 }
 
-.section-sub {
-  font-size: 1rem;
-  color: var(--muted);
-  max-width: 520px;
+/* Shared outline button */
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 32px;
+  border: 1.5px solid var(--text);
+  border-radius: 10px;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s var(--ease);
 }
+
+.outline-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--text);
+  transform: translateY(101%);
+  transition: transform 0.35s var(--ease);
+  z-index: 0;
+}
+
+.outline-btn:hover::before { transform: translateY(0); }
+.outline-btn:hover { color: var(--bg); }
+
+.outline-btn .btn-text,
+.outline-btn .btn-arrow { position: relative; z-index: 1; }
+
+.outline-btn .btn-arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-spring);
+}
+.outline-btn:hover .btn-arrow { transform: translate(3px, -3px); }

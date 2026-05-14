@@ -1,94 +1,99 @@
+import { useLang } from '../LangContext'
+import { useReveal, useRevealChildren } from '../hooks/useReveal'
+import MagneticBtn from './MagneticBtn'
 import './About.css'
 
 const experience = [
-  {
-    period: 'JUN 2024 – SEP 2024',
-    role: 'Flutter Front-End Developer',
-    place: 'IO Tech — Artisy Hub',
-    desc: 'Worked on the front-end of the Artisy Hub mobile application using Flutter. Implemented nearly all core screens, focusing on functionality, responsiveness, and smooth performance.',
-  },
-  {
-    period: 'JAN 2024 – PRESENT',
-    role: 'Google UX Design Certificate',
-    place: 'Coursera',
-    desc: "Completed Google's UX Design Professional Certificate, gaining practical training in design thinking, wireframing, prototyping, and user-centered design practices.",
-  },
-  {
-    period: 'MAY 2025 – PRESENT',
-    role: 'UI/UX Design Student',
-    place: 'UFE Tech',
-    desc: 'Pursuing a degree in UI/UX design. Building skills in user research, prototyping, and product design while applying knowledge to real-world projects.',
-  },
+  { period: 'JUN 2024 – SEP 2024', role: 'Flutter Front-End Developer (Artisy Hub)', place: 'IO Tech', color: '#3b3bff', desc: 'Worked on the front-end of the Artisy Hub mobile application using Flutter. Implemented nearly all core screens, focusing on functionality, responsiveness, and smooth performance. Took ownership of the majority of front-end development tasks though the project was not fully completed.' },
+  { period: 'JAN 2024 – PRESENT', role: 'Google UX Design Certificate', place: 'Coursera', color: '#3b3bff', desc: "Completed Google's UX Design Professional Certificate, gaining practical training in design thinking, wireframing, prototyping, and user-centered design practices." },
+  { period: 'MAY 2025 – PRESENT', role: 'UI/UX Design Student', place: 'UFE Tech', color: '#00c853', desc: 'Pursuing a degree in UI/UX design. Building skills in user research, prototyping, and product design while applying knowledge to real-world projects.' },
 ]
 
-const skills = [
-  { name: 'Figma', pct: 90 },
-  { name: 'Framer', pct: 70 },
-  { name: 'Flutter', pct: 65 },
-  { name: 'User Research', pct: 80 },
-]
+function RotatingBadge() {
+  return (
+    <div className="about-badge">
+      <svg viewBox="0 0 100 100" className="badge-svg">
+        <defs>
+          <path id="ac" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+        </defs>
+        <text fontSize="10.5" fontWeight="600" letterSpacing="2.2" fill="white">
+          <textPath href="#ac">PLACE OF PEACE · SOURCE:TRUST · </textPath>
+        </text>
+      </svg>
+      <div className="badge-arrow">↗</div>
+    </div>
+  )
+}
 
 export default function About() {
+  const { t } = useLang()
+  const ab = t.about
+  const topRef = useReveal({ threshold: 0.08 })
+  const expRef = useReveal({ threshold: 0.08 })
+  const statsRef = useRevealChildren('[data-stat]', { threshold: 0.1 })
+
   return (
     <section id="about" className="section about">
       <div className="container">
-        <div className="section-header">
-          <p className="section-label">About</p>
-          <h2 className="section-title">More about me</h2>
+        {/* Top: photo + bio */}
+        <div className="about-top reveal-fade-up" ref={topRef}>
+          <div className="about-photo-wrap">
+            <div className="about-circle">
+              <img src="/photo.jpg" alt="Lkhagvajav" onError={e => { e.target.style.display = 'none' }} />
+              <div className="about-circle-ph">L</div>
+            </div>
+            <RotatingBadge />
+          </div>
+          <div className="about-text">
+            <div className="section-pill">{ab.label}</div>
+            <h2 className="section-title-serif">{ab.title}</h2>
+            <p className="about-bio">{ab.bio1}</p>
+            <p className="about-bio">{ab.bio2}</p>
+            <MagneticBtn className="outline-btn">
+              <span className="btn-text">{ab.moreCta}</span>
+              <span className="btn-arrow">↗</span>
+            </MagneticBtn>
+          </div>
         </div>
-        <div className="about-grid">
-          <div className="about-left">
-            <p className="about-bio">
-              I'm <strong>Lkhagvajav</strong>, a UI/UX design student at UFE Tech and a certified Google UX Designer (Coursera).
-              I'm passionate about creating designs that not only look good but also feel natural to use.
-            </p>
-            <p className="about-bio">
-              With experience in freelance app design and Flutter development at IO Tech, I bring both design
-              sensibility and technical awareness to every project.
-            </p>
-            <div className="stats-row">
-              <div className="stat">
-                <span className="stat-num">1+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat">
-                <span className="stat-num">3+</span>
-                <span className="stat-label">Projects Done</span>
-              </div>
-              <div className="stat">
-                <span className="stat-num">50+</span>
-                <span className="stat-label">Happy Clients</span>
-              </div>
-            </div>
-            <div className="skills-list">
-              {skills.map(s => (
-                <div className="skill-row" key={s.name}>
-                  <div className="skill-top">
-                    <span>{s.name}</span>
-                    <span>{s.pct}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div className="skill-fill" style={{ width: `${s.pct}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
+
+        {/* Experience timeline */}
+        <div className="about-exp reveal-fade-up" ref={expRef} style={{ transitionDelay: '0.1s' }}>
+          <div className="exp-left">
+            <h3 className="exp-heading">{ab.expTitle}</h3>
+            <p className="exp-sub">{ab.expSub}</p>
           </div>
-          <div className="about-right">
-            <div className="timeline">
-              {experience.map((e, i) => (
-                <div className="timeline-item" key={i}>
-                  <div className="timeline-dot" />
-                  <div className="timeline-content">
-                    <span className="timeline-period">{e.period}</span>
-                    <h4 className="timeline-role">{e.role}</h4>
-                    <p className="timeline-place">{e.place}</p>
-                    <p className="timeline-desc">{e.desc}</p>
-                  </div>
+          <div className="timeline">
+            {experience.map((e, i) => (
+              <div className="tl-item" key={i}>
+                <div className="tl-meta">
+                  <span className="tl-period">{e.period}</span>
+                  <div className="tl-dot" style={{ background: e.color }} />
                 </div>
-              ))}
-            </div>
+                <div className="tl-body">
+                  <h4 className="tl-role">{e.role}</h4>
+                  <p className="tl-place">{e.place}</p>
+                  <p className="tl-desc">{e.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* Stats */}
+        <div className="stats-bar" ref={statsRef}>
+          {[
+            { num: '90%', label: ab.stats.customers },
+            { num: '1', label: ab.stats.years },
+            { num: '10+', label: ab.stats.projects },
+          ].map((s, i) => (
+            <div key={i} style={{ display: 'contents' }}>
+              {i > 0 && <div className="stat-divider" />}
+              <div className="stat-item" data-stat style={{ transitionDelay: `${i * 0.1}s` }}>
+                <span className="stat-num">{s.num}</span>
+                <span className="stat-label">{s.label}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,53 +1,106 @@
+import { useState, useRef } from 'react'
+import { useLang } from '../LangContext'
+import { useProjects } from '../hooks/useProjects'
+import { useReveal, useRevealChildren } from '../hooks/useReveal'
+import MagneticBtn from './MagneticBtn'
 import './Portfolio.css'
 
-const projects = [
-  {
-    title: 'Giingoo – Mongolian Horse Race Watching App',
-    desc: 'Mobile app concept for racing enthusiasts. A sleek, native experience for following Mongolian horse racing events live.',
-    tags: ['UI/UX Design', 'Mobile', 'Concept'],
-    color: '#ff6b35',
-  },
-  {
-    title: 'Artisy Hub Mobile App',
-    desc: 'Creative collaboration platform developed at IO Tech. Built the front-end using Flutter — implemented nearly all core screens with smooth performance.',
-    tags: ['Flutter', 'Frontend Dev', 'IO Tech'],
-    color: '#6c63ff',
-  },
-  {
-    title: 'Soundly – Music Dating App',
-    desc: 'Music-driven dating app concept that matches people based on their favorite songs, playlists, and artists.',
-    tags: ['UI/UX Design', 'Mobile', 'Concept'],
-    color: '#00d4aa',
-  },
-]
+function ProjectCard({ project, viewMore, index }) {
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  const [hovered, setHovered] = useState(false)
+  const cardRef = useRef(null)
+
+  const onMove = e => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+
+    // Subtle tilt
+    const cx = rect.width / 2
+    const cy = rect.height / 2
+    const rx = ((e.clientY - rect.top) - cy) / cy * -4
+    const ry = ((e.clientX - rect.left) - cx) / cx * 4
+    if (cardRef.current) {
+      cardRef.current.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`
+    }
+  }
+
+  const onLeave = () => {
+    setHovered(false)
+    if (cardRef.current) cardRef.current.style.transform = ''
+  }
+
+  return (
+    <div
+      className="proj-card data-reveal"
+      data-reveal
+      data-cursor-card
+      style={{ transitionDelay: `${index * 0.1}s` }}
+      ref={cardRef}
+    >
+      <div
+        className="proj-img-wrap"
+        data-cursor-none
+        onMouseMove={onMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={onLeave}
+      >
+        {project.image
+          ? <img src={project.image} alt={project.title} />
+          : <div className="proj-img-placeholder" style={{ background: project.color || '#ccc' }} />
+        }
+
+        <div className={`proj-overlay${hovered ? ' visible' : ''}`}>
+          <div
+            className="view-more-cursor"
+            style={{ left: pos.x, top: pos.y }}
+          >
+            {viewMore.split('\n').map((l, i) => <span key={i}>{l}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <div className="proj-info">
+        <h3 className="proj-title">{project.title}</h3>
+        <p className="proj-desc">{project.desc}</p>
+        <a href={project.caseStudyUrl || '#'} className="proj-link">
+          <span>View Case Study</span>
+          <span className="proj-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  )
+}
 
 export default function Portfolio() {
+  const { t } = useLang()
+  const { projects, loading } = useProjects()
+  const [line1, line2] = t.portfolio.title.split('\n')
+  const headerRef = useReveal()
+  const gridRef = useRevealChildren('[data-reveal]')
+
   return (
     <section id="portfolio" className="section portfolio">
       <div className="container">
-        <div className="section-header">
-          <p className="section-label">Works</p>
-          <h2 className="section-title">My Works</h2>
-          <p className="section-sub">Check out some of my awesome projects with creative ideas.</p>
+        <div className="section-header centered reveal-fade-up" ref={headerRef}>
+          <div className="section-pill">{t.portfolio.label}</div>
+          <h2 className="section-title-serif">{line1}<br />{line2}</h2>
         </div>
-        <div className="projects-grid">
-          {projects.map((p, i) => (
-            <div className="project-card" key={i}>
-              <div className="project-thumb" style={{ '--c': p.color }}>
-                <div className="project-thumb-inner">
-                  <span className="project-num">0{i + 1}</span>
-                </div>
-              </div>
-              <div className="project-info">
-                <div className="project-tags">
-                  {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-                <h3 className="project-title">{p.title}</h3>
-                <p className="project-desc">{p.desc}</p>
-                <button className="project-cta">View Case Study →</button>
-              </div>
-            </div>
-          ))}
+
+        {loading ? (
+          <div className="proj-loading">Loading projects…</div>
+        ) : (
+          <div className="proj-grid" ref={gridRef}>
+            {projects.map((p, i) => (
+              <ProjectCard key={p.id} project={p} viewMore={t.portfolio.viewMore} index={i} />
+            ))}
+          </div>
+        )}
+
+        <div className="proj-see-all">
+          <MagneticBtn className="outline-btn">
+            <span className="btn-text">{t.portfolio.seeAll}</span>
+            <span className="btn-arrow">↗</span>
+          </MagneticBtn>
         </div>
       </div>
     </section>

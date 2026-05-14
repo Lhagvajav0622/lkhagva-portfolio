@@ -1,0 +1,131 @@
+.pl { display: flex; flex-direction: column; gap: 24px; }
+
+.pl-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+}
+
+.pl-title {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px;
+}
+
+.pl-sub { font-size: 0.83rem; color: #999; margin-top: 4px; }
+
+.pl-list {
+  display: flex; flex-direction: column; gap: 10px;
+  border-radius: 14px;
+  transition: background 0.2s;
+}
+
+.pl-list.dragging-over { background: rgba(59,59,255,0.03); }
+
+.pl-item {
+  display: flex; align-items: center; gap: 16px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.pl-item.dragging {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  transform: scale(1.01);
+  z-index: 100;
+}
+
+.pl-handle {
+  color: #ccc; font-size: 1.2rem;
+  cursor: grab; padding: 4px;
+  user-select: none;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.pl-handle:active { cursor: grabbing; }
+.pl-item:hover .pl-handle { color: #888; }
+
+.pl-thumb {
+  width: 56px; height: 42px;
+  border-radius: 8px; overflow: hidden;
+  flex-shrink: 0; background: #eee;
+}
+
+.pl-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pl-thumb-fallback { width: 100%; height: 100%; }
+
+.pl-info { flex: 1; min-width: 0; }
+
+.pl-item-title {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.92rem; font-weight: 700;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 6px;
+}
+
+.pl-item-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.pl-layout-badge {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px;
+  background: rgba(0,0,0,0.06); color: #666;
+}
+
+.pl-tag {
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px;
+  background: rgba(59,59,255,0.08); color: var(--accent);
+}
+
+.pl-status {
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0; margin-right: 8px;
+}
+
+.pl-status-dot { width: 7px; height: 7px; border-radius: 50%; }
+.pl-status-text { font-size: 0.78rem; font-weight: 500; color: #888; }
+
+.pl-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+.pl-empty {
+  text-align: center; padding: 60px 24px;
+  color: #aaa; font-size: 0.9rem;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+
+/* Shared admin buttons */
+.admin-btn {
+  border: none; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.admin-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+.admin-btn:disabled { opacity: 0.5; transform: none; cursor: not-allowed; }
+
+.admin-btn--primary {
+  padding: 10px 20px;
+  background: var(--accent); color: white;
+  font-size: 0.88rem; font-weight: 600;
+}
+
+.admin-btn--secondary {
+  padding: 10px 20px;
+  background: none; color: var(--text);
+  border: 1.5px solid rgba(0,0,0,0.15) !important;
+  font-size: 0.88rem;
+}
+
+.admin-btn--sm {
+  padding: 7px 14px;
+  background: none; color: var(--text);
+  border: 1.5px solid rgba(0,0,0,0.12) !important;
+  font-size: 0.8rem;
+}
+
+.admin-btn--danger {
+  color: #ff4444;
+  border-color: rgba(255,68,68,0.2) !important;
+}
+
+.admin-btn--danger:hover { background: rgba(255,68,68,0.05); }

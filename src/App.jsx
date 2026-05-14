@@ -1,22 +1,23 @@
+import { Routes, Route } from 'react-router-dom'
+import { LangProvider } from './LangContext'
+import { AnimatePresence } from 'framer-motion'
 import './App.css'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Portfolio from './components/Portfolio'
-import About from './components/About'
-import Process from './components/Process'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+
+// Pages
+import MainSite  from './pages/MainSite'
+import CaseStudy from './pages/CaseStudy'
+import AdminPage from './pages/AdminPage'
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Portfolio />
-      <About />
-      <Process />
-      <Contact />
-      <Footer />
-    </>
+    <LangProvider>
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="/"           element={<MainSite />} />
+          <Route path="/project/:slug" element={<CaseStudy />} />
+          <Route path="/admin"      element={<AdminPage />} />
+        </Routes>
+      </AnimatePresence>
+    </LangProvider>
   )
 }
