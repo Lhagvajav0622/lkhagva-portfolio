@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {
   collection, onSnapshot, doc,
   addDoc, updateDoc, deleteDoc,
-  query, orderBy, serverTimestamp,
+  query, serverTimestamp,
   writeBatch,
 } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage'
@@ -32,11 +32,11 @@ export function useProjects() {
 
     const timer = setTimeout(() => { setProjects(FALLBACK_PROJECTS); setLoading(false) }, 5000)
 
-    const q  = query(collection(db, COLLECTION), orderBy('order'))
+    const q  = query(collection(db, COLLECTION))
     const un = onSnapshot(q,
       snap => {
         clearTimeout(timer)
-        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
         setProjects(data.length ? data : FALLBACK_PROJECTS)
         setLoading(false)
       },
@@ -58,9 +58,9 @@ export function useAdminProjects() {
 
     const timer = setTimeout(() => setLoading(false), 5000)
 
-    const q  = query(collection(db, COLLECTION), orderBy('order'))
+    const q  = query(collection(db, COLLECTION))
     const un = onSnapshot(q,
-      snap => { clearTimeout(timer); setProjects(snap.docs.map(d => ({ id: d.id, ...d.data() }))); setLoading(false) },
+      snap => { clearTimeout(timer); setProjects(snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 99) - (b.order ?? 99))); setLoading(false) },
       () => { clearTimeout(timer); setLoading(false) }
     )
     return () => { clearTimeout(timer); un() }
