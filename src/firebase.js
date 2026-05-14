@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { initializeFirestore } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore/lite'
 import { getStorage } from 'firebase/storage'
 
 // Replace with your Firebase project config:
@@ -14,7 +14,5 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
-export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
-})
+export const db = getFirestore(app)
 export const storage = getStorage(app)

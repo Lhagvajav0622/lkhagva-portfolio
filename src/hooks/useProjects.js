@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import {
-  collection, onSnapshot, doc,
+  collection, getDocs, doc,
   addDoc, updateDoc, deleteDoc,
   query, writeBatch,
-} from 'firebase/firestore'
+} from 'firebase/firestore/lite'
 
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage'
 import { db, storage } from '../firebase'
@@ -19,47 +19,43 @@ export const FALLBACK_PROJECTS = [
   { id: '4', title: 'Meelo – Networking App', description: 'A modern professional networking app replacing physical business cards with digital NFC profiles.', tags: ['UI/UX Design', 'Branding'], image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80', layout: 'compact', featured: false, status: 'published', order: 3, slug: 'meelo', client: 'Personal', date: 'Jan 2025', services: 'UI/UX Design', overview: 'NFC-based digital business card app.', problem: 'Physical business cards are wasteful and easily lost.', outcome: 'Designed a one-tap NFC profile sharing experience.', processSteps: [], gallery: [], liveUrl: '' },
 ]
 
-// ── Public hook (read-only, realtime) ─────────────────────────────────────────
+async function fetchProjects() {
+  const snap = await getDocs(collection(db, COLLECTION))
+  return snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
+}
+
+// ── Public hook (read-only) ───────────────────────────────────────────────────
 export function useProjects() {
   const [projects, setProjects] = useState(FALLBACK_PROJECTS)
   const [loading,  setLoading]  = useState(true)
+  const [tick,     setTick]     = useState(0)
 
   useEffect(() => {
-    const timer = setTimeout(() => { setProjects(FALLBACK_PROJECTS); setLoading(false) }, 5000)
+    let cancelled = false
+    fetchProjects()
+      .then(data => { if (!cancelled) { setProjects(data.length ? data : FALLBACK_PROJECTS); setLoading(false) } })
+      .catch(()   => { if (!cancelled) { setLoading(false) } })
+    return () => { cancelled = true }
+  }, [tick])
 
-    const q  = query(collection(db, COLLECTION))
-    const un = onSnapshot(q,
-      snap => {
-        clearTimeout(timer)
-        const data = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-        setProjects(data.length ? data : FALLBACK_PROJECTS)
-        setLoading(false)
-      },
-      () => { clearTimeout(timer); setLoading(false) }
-    )
-    return () => { clearTimeout(timer); un() }
-  }, [])
-
-  return { projects: projects.filter(p => p.status === 'published'), loading }
+  return { projects: projects.filter(p => p.status === 'published'), loading, refresh: () => setTick(t => t + 1) }
 }
 
 // ── Admin hook (full CRUD) ────────────────────────────────────────────────────
 export function useAdminProjects() {
   const [projects, setProjects] = useState([])
   const [loading,  setLoading]  = useState(true)
+  const [tick,     setTick]     = useState(0)
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 5000)
+    let cancelled = false
+    fetchProjects()
+      .then(data => { if (!cancelled) { setProjects(data); setLoading(false) } })
+      .catch(()   => { if (!cancelled) { setLoading(false) } })
+    return () => { cancelled = true }
+  }, [tick])
 
-    const q  = query(collection(db, COLLECTION))
-    const un = onSnapshot(q,
-      snap => { clearTimeout(timer); setProjects(snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 99) - (b.order ?? 99))); setLoading(false) },
-      () => { clearTimeout(timer); setLoading(false) }
-    )
-    return () => { clearTimeout(timer); un() }
-  }, [])
-
-  return { projects, loading }
+  return { projects, loading, refresh: () => setTick(t => t + 1) }
 }
 
 // ── CRUD ──────────────────────────────────────────────────────────────────────

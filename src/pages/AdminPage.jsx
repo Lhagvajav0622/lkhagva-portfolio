@@ -8,7 +8,7 @@ import './AdminPage.css'
 
 export default function AdminPage() {
   const { authed, login, logout } = useAdminAuth()
-  const { projects, loading } = useAdminProjects()
+  const { projects, loading, refresh } = useAdminProjects()
   const [view, setView]   = useState('list')   // 'list' | 'form'
   const [editing, setEditing] = useState(null)
 
@@ -16,7 +16,7 @@ export default function AdminPage() {
 
   const openEdit = project => { setEditing(project); setView('form') }
   const openAdd  = ()      => { setEditing(null);    setView('form') }
-  const closeForm = ()     => { setEditing(null);    setView('list') }
+  const closeForm = ()     => { setEditing(null);    setView('list'); refresh() }
 
   const published = projects.filter(p => p.status === 'published').length
   const drafts    = projects.filter(p => p.status === 'draft').length
@@ -64,7 +64,7 @@ export default function AdminPage() {
               >
                 {loading
                   ? <div className="ap-loading">Loading projects…</div>
-                  : <ProjectList projects={projects} onEdit={openEdit} onAdd={openAdd} />
+                  : <ProjectList projects={projects} onEdit={openEdit} onAdd={openAdd} onChange={refresh} />
                 }
               </motion.div>
             ) : (
