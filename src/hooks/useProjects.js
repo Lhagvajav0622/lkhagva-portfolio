@@ -5,15 +5,11 @@ import {
   query, writeBatch,
 } from 'firebase/firestore'
 
-const now = () => new Date().toISOString()
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage'
 import { db, storage } from '../firebase'
 
+const now = () => new Date().toISOString()
 const COLLECTION = 'projects'
-
-const isConfigured = () =>
-  !( import.meta.env.VITE_FIREBASE_API_KEY?.includes('YOUR') ||
-     !import.meta.env.VITE_FIREBASE_API_KEY )
 
 // ── Fallback data (shown when Firebase isn't configured) ──────────────────────
 export const FALLBACK_PROJECTS = [
@@ -29,8 +25,6 @@ export function useProjects() {
   const [loading,  setLoading]  = useState(true)
 
   useEffect(() => {
-    if (!isConfigured()) { setLoading(false); return }
-
     const timer = setTimeout(() => { setProjects(FALLBACK_PROJECTS); setLoading(false) }, 5000)
 
     const q  = query(collection(db, COLLECTION))
@@ -55,8 +49,6 @@ export function useAdminProjects() {
   const [loading,  setLoading]  = useState(true)
 
   useEffect(() => {
-    if (!isConfigured()) { setProjects(FALLBACK_PROJECTS); setLoading(false); return }
-
     const timer = setTimeout(() => setLoading(false), 5000)
 
     const q  = query(collection(db, COLLECTION))
