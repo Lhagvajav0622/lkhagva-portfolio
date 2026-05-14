@@ -1,24 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { collection, query, where, getDocs } from 'firebase/firestore'
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore/lite'
 import { db } from '../firebase'
-import { FALLBACK_PROJECTS } from '../hooks/useProjects'
 import './CaseStudy.css'
 
 const fade = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease: [0.25,0.46,0.45,0.94] } }
 
 async function fetchProject(slug) {
-  const isConfigured = !( !import.meta.env.VITE_FIREBASE_API_KEY || import.meta.env.VITE_FIREBASE_API_KEY.includes('YOUR') )
-  if (!isConfigured) return FALLBACK_PROJECTS.find(p => p.slug === slug || p.id === slug) || null
-
   const q = query(collection(db, 'projects'), where('slug', '==', slug))
   const snap = await getDocs(q)
   if (!snap.empty) return { id: snap.docs[0].id, ...snap.docs[0].data() }
 
-  const q2 = query(collection(db, 'projects'), where('__name__', '==', slug))
-  const snap2 = await getDocs(q2)
-  return snap2.empty ? null : { id: snap2.docs[0].id, ...snap2.docs[0].data() }
+  const docSnap = await getDoc(doc(db, 'projects', slug))
+  return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null
 }
 
 export default function CaseStudy() {
