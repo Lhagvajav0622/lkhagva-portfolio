@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import {
   collection, onSnapshot, doc,
   addDoc, updateDoc, deleteDoc,
-  query, serverTimestamp,
-  writeBatch,
+  query, writeBatch,
 } from 'firebase/firestore'
+
+const now = () => new Date().toISOString()
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage'
 import { db, storage } from '../firebase'
 
@@ -71,11 +72,11 @@ export function useAdminProjects() {
 
 // ── CRUD ──────────────────────────────────────────────────────────────────────
 export async function addProject(data) {
-  return addDoc(collection(db, COLLECTION), { ...data, createdAt: serverTimestamp(), updatedAt: serverTimestamp() })
+  return addDoc(collection(db, COLLECTION), { ...data, createdAt: now(), updatedAt: now() })
 }
 
 export async function updateProject(id, data) {
-  return updateDoc(doc(db, COLLECTION, id), { ...data, updatedAt: serverTimestamp() })
+  return updateDoc(doc(db, COLLECTION, id), { ...data, updatedAt: now() })
 }
 
 export async function deleteProject(id) {
