@@ -30,16 +30,19 @@ export function useProjects() {
   useEffect(() => {
     if (!isConfigured()) { setLoading(false); return }
 
+    const timer = setTimeout(() => { setProjects(FALLBACK_PROJECTS); setLoading(false) }, 5000)
+
     const q  = query(collection(db, COLLECTION), orderBy('order'))
     const un = onSnapshot(q,
       snap => {
+        clearTimeout(timer)
         const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
         setProjects(data.length ? data : FALLBACK_PROJECTS)
         setLoading(false)
       },
-      () => setLoading(false)
+      () => { clearTimeout(timer); setLoading(false) }
     )
-    return un
+    return () => { clearTimeout(timer); un() }
   }, [])
 
   return { projects: projects.filter(p => p.status === 'published'), loading }
@@ -53,12 +56,14 @@ export function useAdminProjects() {
   useEffect(() => {
     if (!isConfigured()) { setProjects(FALLBACK_PROJECTS); setLoading(false); return }
 
+    const timer = setTimeout(() => setLoading(false), 5000)
+
     const q  = query(collection(db, COLLECTION), orderBy('order'))
     const un = onSnapshot(q,
-      snap => { setProjects(snap.docs.map(d => ({ id: d.id, ...d.data() }))); setLoading(false) },
-      () => setLoading(false)
+      snap => { clearTimeout(timer); setProjects(snap.docs.map(d => ({ id: d.id, ...d.data() }))); setLoading(false) },
+      () => { clearTimeout(timer); setLoading(false) }
     )
-    return un
+    return () => { clearTimeout(timer); un() }
   }, [])
 
   return { projects, loading }
