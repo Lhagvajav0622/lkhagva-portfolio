@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { initializeFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 // Replace with your Firebase project config:
@@ -13,6 +13,8 @@ const firebaseConfig = {
   appId:             import.meta.env.VITE_FIREBASE_APP_ID             || '1:875888557337:web:63fc46e1a4bab6cbb09988',
 }
 
-const app     = initializeApp(firebaseConfig)
-export const db      = getFirestore(app)
+const app = initializeApp(firebaseConfig)
+export const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+})
 export const storage = getStorage(app)
