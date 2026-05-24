@@ -1,7 +1,36 @@
+import { useEffect, useRef, useState } from 'react'
 import { useLang } from '../LangContext'
 import { useReveal, useRevealChildren } from '../hooks/useReveal'
 import MagneticBtn from './MagneticBtn'
 import './About.css'
+
+function CountUp({ to, suffix = '', duration = 1600 }) {
+  const [value, setValue] = useState(0)
+  const ref = useRef(null)
+  const hasRun = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasRun.current) {
+        hasRun.current = true
+        const start = performance.now()
+        const tick = now => {
+          const t = Math.min((now - start) / duration, 1)
+          const eased = 1 - Math.pow(1 - t, 3)
+          setValue(Math.round(to * eased))
+          if (t < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      }
+    }, { threshold: 0.4 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [to, duration])
+
+  return <span ref={ref}>{value}{suffix}</span>
+}
 
 function RotatingBadge() {
   return (
@@ -77,14 +106,14 @@ export default function About() {
         {/* Stats */}
         <div className="stats-bar" ref={statsRef}>
           {[
-            { num: '90%', label: ab.stats.customers },
-            { num: '1', label: ab.stats.years },
-            { num: '10+', label: ab.stats.projects },
+            { to: 90, suffix: '%', label: ab.stats.customers },
+            { to: 2,  suffix: '',  label: ab.stats.years },
+            { to: 5,  suffix: '+', label: ab.stats.projects },
           ].map((s, i) => (
             <div key={i} style={{ display: 'contents' }}>
               {i > 0 && <div className="stat-divider" />}
               <div className="stat-item" data-stat style={{ transitionDelay: `${i * 0.1}s` }}>
-                <span className="stat-num">{s.num}</span>
+                <span className="stat-num"><CountUp to={s.to} suffix={s.suffix} /></span>
                 <span className="stat-label">{s.label}</span>
               </div>
             </div>
