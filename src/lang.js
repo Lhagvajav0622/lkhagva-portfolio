@@ -26,24 +26,10 @@ export const translations = {
       note: 'Have a bigger or custom project? Let\'s talk — reach out via the contact form.',
       plans: [
         {
-          name: 'Starter',
-          tagline: 'Perfect for landing pages and small apps.',
-          price: '299',
-          featured: false,
-          features: ['Up to 5 screens / pages', 'UI design in Figma', '2 rounds of revisions', 'Source files included', 'Response within 24h'],
-        },
-        {
-          name: 'Pro',
-          tagline: 'Full product design for growing teams.',
-          price: '799',
-          featured: true,
-          features: ['Up to 20 screens / pages', 'UI/UX design + prototype', 'Unlimited revisions', 'Front-end development', 'Priority support', 'Handoff-ready deliverables'],
-        },
-        {
           name: 'Custom',
           tagline: 'Large-scale or ongoing design work.',
           price: '—',
-          featured: false,
+          featured: true,
           features: ['Unlimited scope', 'Multi-platform design', 'Research & user testing', 'Dev collaboration', 'Brand identity', 'Long-term retainer available'],
         },
       ],
@@ -78,24 +64,10 @@ export const translations = {
       note: 'Томоохон буюу захиалгат төсөл байна уу? Ярилцацгаая — холбоо барих хэсгээр бичнэ үү.',
       plans: [
         {
-          name: 'Стартер',
-          tagline: 'Лэндинг пэйж болон жижиг апп-д тохиромжтой.',
-          price: '299',
-          featured: false,
-          features: ['5 хүртэлх дэлгэц / хуудас', 'Figma-д UI дизайн', '2 удаагийн засвар', 'Эх файл багтсан', '24 цагийн дотор хариу'],
-        },
-        {
-          name: 'Про',
-          tagline: 'Өсөн нэмэгдэж буй багийн бүтэн бүтээгдэхүүн дизайн.',
-          price: '799',
-          featured: true,
-          features: ['20 хүртэлх дэлгэц / хуудас', 'UI/UX дизайн + прототип', 'Хязгааргүй засвар', 'Фронт-энд хөгжүүлэлт', 'Тэргүүлэх дэмжлэг', 'Хөгжүүлэлтэд бэлэн файлууд'],
-        },
-        {
           name: 'Захиалгат',
           tagline: 'Том хэмжээний буюу тогтмол дизайн ажил.',
           price: '—',
-          featured: false,
+          featured: true,
           features: ['Хязгааргүй хүрээ', 'Олон платформ дизайн', 'Судалгаа & хэрэглэгчийн тест', 'Хөгжүүлэгчтэй хамтын ажиллагаа', 'Брэнд айдентити', 'Урт хугацааны гэрээ боломжтой'],
         },
       ],

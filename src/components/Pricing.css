@@ -12,7 +12,8 @@
 
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 460px);
+  justify-content: center;
   gap: 20px;
   margin-top: 56px;
   align-items: start;
