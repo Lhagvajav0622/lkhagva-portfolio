@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useLang } from '../LangContext'
 import './CustomCursor.css'
 
 // Spring physics: stiffness / damping per axis
@@ -16,13 +17,19 @@ function stepSpring(s, target, dt) {
 function lerp(a, b, t) { return a + (b - a) * t }
 
 // Cursor state targets: [width, height, borderRadius(px), dark]
+// label is computed per-language at runtime via STATE_LABELS
 const STATES = {
-  default: { w: 34, h: 34, r: 999, dark: false, label: '' },
-  btn:     { w: 88, h: 42, r: 999, dark: false, label: '' },
-  card:    { w: 80, h: 80, r: 16,  dark: true,  label: 'VIEW' },
-  text:    { w: 2,  h: 30, r: 2,   dark: false, label: '' },
-  img:     { w: 64, h: 64, r: 999, dark: false, label: '' },
-  drag:    { w: 46, h: 46, r: 999, dark: false, label: '' },
+  default: { w: 34, h: 34, r: 999, dark: false },
+  btn:     { w: 88, h: 42, r: 999, dark: false },
+  card:    { w: 80, h: 80, r: 16,  dark: true  },
+  text:    { w: 2,  h: 30, r: 2,   dark: false },
+  img:     { w: 64, h: 64, r: 999, dark: false },
+  drag:    { w: 46, h: 46, r: 999, dark: false },
+}
+
+const STATE_LABELS = {
+  en: { card: 'VIEW' },
+  mn: { card: 'ҮЗЭХ' },
 }
 
 const L_DOT  = 0.28   // dot lerp factor
@@ -30,10 +37,22 @@ const L_RING = 0.10   // ring position lerp
 const L_DIM  = 0.11   // ring dimension lerp
 
 export default function CustomCursor() {
+  const { lang } = useLang()
+  const langRef  = useRef(lang)
+  const stateRef = useRef('default')
   const ringRef  = useRef(null)
   const dotRef   = useRef(null)
   const labelRef = useRef(null)
   const trailRef = useRef(null)
+
+  // Keep langRef in sync and live-update label when language changes
+  useEffect(() => {
+    langRef.current = lang
+    if (labelRef.current && stateRef.current === 'card') {
+      const txt = STATE_LABELS[lang]?.card || ''
+      labelRef.current.textContent = txt
+    }
+  }, [lang])
 
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return
@@ -68,10 +87,11 @@ export default function CustomCursor() {
     const applyState = s => {
       if (state === s) return
       state = s
-      const T = STATES[s]
+      stateRef.current = s
+      const label = STATE_LABELS[langRef.current]?.[s] || ''
       if (labelRef.current) {
-        labelRef.current.textContent = T.label
-        labelRef.current.style.opacity = T.label ? '1' : '0'
+        labelRef.current.textContent = label
+        labelRef.current.style.opacity = label ? '1' : '0'
       }
       if (ringRef.current) {
         ringRef.current.dataset.state = s
