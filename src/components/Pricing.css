@@ -61,11 +61,12 @@
   transform: translateX(-50%);
   background: var(--accent);
   color: white;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 5px 16px;
+  padding: 6px 14px;
   border-radius: 20px;
   white-space: nowrap;
 }
@@ -73,17 +74,19 @@
 .plan-top { display: flex; flex-direction: column; gap: 6px; }
 
 .plan-name {
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.4px;
+  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
 .plan-tagline {
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #888;
-  line-height: 1.5;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
 }
 .plan-featured .plan-tagline { color: rgba(255,255,255,0.55); }
 
@@ -97,10 +100,10 @@
 .plan-price--text { align-items: center; }
 
 .plan-amount-text {
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   line-height: 1.2;
 }
 .plan-featured .plan-amount-text { color: white; }
@@ -113,7 +116,7 @@
 .plan-featured .plan-currency { color: rgba(255,255,255,0.5); }
 
 .plan-amount {
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: 'Satoshi', 'Inter', sans-serif;
   font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -3px;
@@ -136,11 +139,14 @@
 }
 
 .plan-feature {
-  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
   font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.55;
   color: #555;
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: flex-start;
 }
 .plan-featured .plan-feature { color: rgba(255,255,255,0.8); }
@@ -163,7 +169,7 @@
   border-radius: 100px;
   border: 1.5px solid rgba(0,0,0,0.15);
   background: none;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);

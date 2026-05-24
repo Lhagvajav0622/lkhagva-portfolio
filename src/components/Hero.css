@@ -92,7 +92,7 @@
 .hero-arch-placeholder {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: 'Satoshi', 'Inter', sans-serif;
   font-size: 8rem; color: rgba(0,0,0,0.1);
   user-select: none;
 }
@@ -146,7 +146,7 @@
 }
 
 .hfc-value {
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: 'Satoshi', 'Inter', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--text);
@@ -243,24 +243,26 @@
 
 .hero-pill {
   display: inline-flex; align-items: center;
-  padding: 6px 16px;
+  padding: 6px 14px;
   background: var(--accent); color: white;
   border-radius: 30px;
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px;
-  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  margin-bottom: 26px;
 }
 
 .hero-title {
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-size: clamp(3rem, 5.6vw, 5.2rem);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -2.5px;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   margin-bottom: 24px;
   color: var(--text);
 }
 
-.hero-title-heavy { font-weight: 800; }
+.hero-title-heavy { font-weight: 900; }
 
 .hero-underline {
   display: block; height: 3px; width: 160px;
@@ -269,9 +271,10 @@
 }
 
 .hero-sub {
-  font-size: 1rem; font-weight: 400;
-  color: #555; max-width: 400px;
-  line-height: 1.78; margin-bottom: 36px;
+  font-size: 1.05rem; font-weight: 400;
+  color: #555; max-width: 440px;
+  line-height: 1.65; letter-spacing: -0.005em;
+  margin-bottom: 36px;
 }
 
 .hero-cta-wrap {
