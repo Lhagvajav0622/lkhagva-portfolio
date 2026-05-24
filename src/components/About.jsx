@@ -3,12 +3,6 @@ import { useReveal, useRevealChildren } from '../hooks/useReveal'
 import MagneticBtn from './MagneticBtn'
 import './About.css'
 
-const experience = [
-  { period: 'JUN 2024 – SEP 2024', role: 'Flutter Front-End Developer (Artisy Hub)', place: 'IO Tech', color: '#3b3bff', desc: 'Worked on the front-end of the Artisy Hub mobile application using Flutter. Implemented nearly all core screens, focusing on functionality, responsiveness, and smooth performance. Took ownership of the majority of front-end development tasks though the project was not fully completed.' },
-  { period: 'JAN 2024 – PRESENT', role: 'Google UX Design Certificate', place: 'Coursera', color: '#3b3bff', desc: "Completed Google's UX Design Professional Certificate, gaining practical training in design thinking, wireframing, prototyping, and user-centered design practices." },
-  { period: 'MAY 2025 – PRESENT', role: 'UI/UX Design Student', place: 'UFE Tech', color: '#00c853', desc: 'Pursuing a degree in UI/UX design. Building skills in user research, prototyping, and product design while applying knowledge to real-world projects.' },
-]
-
 function RotatingBadge() {
   return (
     <div className="about-badge">
@@ -28,6 +22,7 @@ function RotatingBadge() {
 export default function About() {
   const { t } = useLang()
   const ab = t.about
+  const experience = ab.experience || []
   const topRef = useReveal({ threshold: 0.08 })
   const expRef = useReveal({ threshold: 0.08 })
   const statsRef = useRevealChildren('[data-stat]', { threshold: 0.1 })

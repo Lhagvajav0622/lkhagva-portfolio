@@ -3,7 +3,20 @@ export const translations = {
     nav: { home: 'Home', services: 'Services', about: 'About', portfolio: 'Portfolio', process: 'Process', pricing: 'Pricing', contact: 'Contact' },
     hero: { badge: '✦ HELLO!', title: "I'm Lkhagvajav, a\nUI/UX designer.", sub: 'Creating meaningful digital experiences through thoughtful design and user-centered thinking.', cta: 'See My Works', available: 'I AM AVAILABLE · FOR FREELANCE · ' },
     portfolio: { label: '★ MY WORKS', title: 'Check out some of our awesome\nprojects with creative ideas.', seeAll: 'See All Works', viewCase: 'View Case Study', viewMore: 'VIEW\nMORE' },
-    about: { label: '✦ ABOUT', title: 'More about me', bio1: "I'm Lkhagvajav, a UI/UX design student at UFE Tech and a certified Google UX Designer (Coursera).", bio2: "I've worked on multiple freelance app design gigs, front-end Flutter development at IO Tech (Artisy Hub project), and helped grow family businesses while managing my own creative projects. My journey blends both design and development, letting me craft experiences end-to-end.", moreCta: 'More About Me', expTitle: 'My experiences', expSub: "I've had the pleasure to work with diverse teams and industries, from tech to design to business. I'm always looking forward to exciting challenges that push my creativity and skills.", stats: { customers: 'Satisfied happy customers', years: 'Years of work experience', projects: 'Successful projects done' } },
+    about: {
+      label: '✦ ABOUT', title: 'More about me',
+      bio1: "I'm Lkhagvajav, a UI/UX design student at UFE Tech and a certified Google UX Designer (Coursera).",
+      bio2: "I've worked on multiple freelance app design gigs, front-end Flutter development at IO Tech (Artisy Hub project), and helped grow family businesses while managing my own creative projects. My journey blends both design and development, letting me craft experiences end-to-end.",
+      moreCta: 'More About Me',
+      expTitle: 'My experiences',
+      expSub: "I've had the pleasure to work with diverse teams and industries, from tech to design to business. I'm always looking forward to exciting challenges that push my creativity and skills.",
+      experience: [
+        { period: 'JUN 2024 – SEP 2024', role: 'Flutter Front-End Developer (Artisy Hub)', place: 'IO Tech', color: '#3b3bff', desc: 'Worked on the front-end of the Artisy Hub mobile application using Flutter. Implemented nearly all core screens, focusing on functionality, responsiveness, and smooth performance. Took ownership of the majority of front-end development tasks though the project was not fully completed.' },
+        { period: 'JAN 2024 – PRESENT', role: 'Google UX Design Certificate', place: 'Coursera', color: '#3b3bff', desc: "Completed Google's UX Design Professional Certificate, gaining practical training in design thinking, wireframing, prototyping, and user-centered design practices." },
+        { period: 'MAY 2025 – PRESENT', role: 'UI/UX Design Student', place: 'UFE Tech', color: '#00c853', desc: 'Pursuing a degree in UI/UX design. Building skills in user research, prototyping, and product design while applying knowledge to real-world projects.' },
+      ],
+      stats: { customers: 'Satisfied happy customers', years: 'Years of work experience', projects: 'Successful projects done' }
+    },
     process: { label: '✦ PROCESS', title: 'My workflow is centered around\nbeing highly productive.', tools: 'Tools that power my every day:', steps: [ { title: 'Research & Ideation', desc: 'Start by understanding your brand, audience, and goals gathering insights and sparking ideas that will shape the foundation of the design.' }, { title: 'Concept Development', desc: 'Translate insights into structured concepts and layout directions that align with your vision.' }, { title: 'Prototyping & Testing', desc: 'Build interactive prototypes and validate through user testing, then iterate based on real feedback.' }, { title: 'Finalize Product', desc: 'Polish every detail and deliver pixel-perfect, handoff-ready design files ready for development.' } ] },
     services: {
       label: '✦ SERVICES',
@@ -52,7 +65,20 @@ export const translations = {
     nav: { home: 'Нүүр', services: 'Үйлчилгээ', about: 'Миний тухай', portfolio: 'Портфолио', process: 'Процесс', pricing: 'Үнэ', contact: 'Холбоо барих' },
     hero: { badge: '✦ САЙН УУ!', title: "Би Лхагважав,\nUI/UX дизайнер.", sub: 'Хэрэглэгч төвтэй сэтгэлгээгээр утга учиртай дижитал туршлага бүтээдэг.', cta: 'Бүтээлүүдийг үзэх', available: 'БИ ЧӨЛӨӨТ АЖИЛД · БЭЛЭН · ' },
     portfolio: { label: '★ БҮТЭЭЛҮҮД', title: 'Бидний гайхалтай бүтээлүүдийг\nүзэж танилцаарай.', seeAll: 'Бүгдийг үзэх', viewCase: 'Дэлгэрэнгүй үзэх', viewMore: 'ҮЗЭХ' },
-    about: { label: '✦ МИНИЙ ТУХАЙ', title: 'Дэлгэрэнгүй танилцуулга', bio1: 'Би Лхагважав, UFE Tech-д UI/UX дизайн судалж буй оюутан бөгөөд Google UX Дизайны гэрчилгээтэй (Coursera).', bio2: 'Олон чөлөөт дизайн ажил, IO Tech дахь Flutter хөгжүүлэлт (Artisy Hub), гэр бүлийн бизнесийн удирдлагын туршлагатай.', moreCta: 'Дэлгэрэнгүй', expTitle: 'Туршлага', expSub: 'Технологи, дизайн, бизнесийн салбарт олон баг, компанитай хамтран ажиллаж байсан.', stats: { customers: 'Сэтгэл ханасан харилцагч', years: 'Ажлын туршлага (жил)', projects: 'Амжилттай дууссан төсөл' } },
+    about: {
+      label: '✦ МИНИЙ ТУХАЙ', title: 'Дэлгэрэнгүй танилцуулга',
+      bio1: 'Би Лхагважав, UFE Tech-д UI/UX дизайн судалж буй оюутан бөгөөд Google UX Дизайны гэрчилгээтэй (Coursera).',
+      bio2: 'Олон чөлөөт дизайн ажил, IO Tech дахь Flutter хөгжүүлэлт (Artisy Hub), гэр бүлийн бизнесийн удирдлагын туршлагатай.',
+      moreCta: 'Дэлгэрэнгүй',
+      expTitle: 'Туршлага',
+      expSub: 'Технологи, дизайн, бизнесийн салбарт олон баг, компанитай хамтран ажиллаж байсан.',
+      experience: [
+        { period: '2024 6-Р САР – 2024 9-Р САР', role: 'Flutter Front-End Хөгжүүлэгч (Artisy Hub)', place: 'IO Tech', color: '#3b3bff', desc: 'Artisy Hub мобайл аппликейшний фронт-энд дээр Flutter ашиглан ажилласан. Үндсэн дэлгэцүүдийн ихэнхийг хийж, функциональ байдал, responsive хариу үйлдэл, гүйцэтгэлд анхаарал хандуулсан. Төсөл бүрэн дуусаагүй ч фронт-энд хөгжүүлэлтийн ихэнх ажлыг хариуцаж байсан.' },
+        { period: '2024 1-Р САР – ОДОО', role: 'Google UX Дизайн Гэрчилгээ', place: 'Coursera', color: '#3b3bff', desc: "Google-ийн UX Дизайны мэргэжлийн гэрчилгээг амжилттай дүүргэж, дизайн сэтгэлгээ, wireframing, прототип хийх, хэрэглэгч төвт дизайны практик мэдлэг олж авсан." },
+        { period: '2025 5-Р САР – ОДОО', role: 'UI/UX Дизайны Оюутан', place: 'UFE Tech', color: '#00c853', desc: 'UFE Tech-д UI/UX дизайны чиглэлээр суралцаж байна. Хэрэглэгчийн судалгаа, прототип хийх, бүтээгдэхүүний дизайны чадвараа хөгжүүлж, бодит төслүүд дээр хэрэглэж байна.' },
+      ],
+      stats: { customers: 'Сэтгэл ханасан харилцагч', years: 'Ажлын туршлага (жил)', projects: 'Амжилттай дууссан төсөл' }
+    },
     process: { label: '✦ ПРОЦЕСС', title: 'Миний ажлын арга барил\nбүтээмжид чиглэсэн.', tools: 'Өдөр тутам ашигладаг хэрэгслүүд:', steps: [ { title: 'Судалгаа & Санаа', desc: 'Брэнд, үзэгчид, зорилгыг ойлгосноор дизайны үндэс суурийг тавина.' }, { title: 'Концепц боловсруулах', desc: 'Судалгааг бүтэцтэй концепц болгон хувиргаж, таны алсын харааг тусгана.' }, { title: 'Прототип & Тест', desc: 'Интерактив прототип бүтээж, хэрэглэгчийн тест дээр үндэслэн сайжруулна.' }, { title: 'Эцсийн бүтээгдэхүүн', desc: 'Пикселийн нарийвчлалтайгаар дуусгаж, хөгжүүлэлтэд бэлэн файлуудыг хүргэнэ.' } ] },
     services: {
       label: '✦ ҮЙЛЧИЛГЭЭ',
