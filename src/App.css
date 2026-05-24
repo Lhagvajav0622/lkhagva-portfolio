@@ -32,6 +32,7 @@
   line-height: 1.05;
   letter-spacing: -0.035em;
   color: var(--text);
+  margin-bottom: 24px;
 }
 
 /* Shared outline button */
