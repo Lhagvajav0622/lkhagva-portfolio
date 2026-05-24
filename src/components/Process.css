@@ -41,25 +41,28 @@
 }
 
 .process-num {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.55);
 }
 
 .process-title {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 0.97rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: white;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
 }
 
 .process-desc {
-  font-size: 0.82rem;
+  font-size: var(--fs-body);
   font-weight: 400;
-  color: rgba(255,255,255,0.78);
-  line-height: 1.65;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  letter-spacing: -0.005em;
 }
 
 .tools-row {

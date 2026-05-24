@@ -1,12 +1,13 @@
 .services { background: var(--bg); }
 
 .svc-sub {
-  font-size: 0.95rem;
+  font-size: var(--fs-body-lg);
   font-weight: 400;
-  color: #666;
-  max-width: 500px;
-  margin: 14px auto 0;
-  line-height: 1.8;
+  color: #4a4a4a;
+  max-width: 560px;
+  margin: 18px auto 0;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
   text-align: center;
 }
 
@@ -54,18 +55,19 @@
 
 .svc-title {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.3px;
-  line-height: 1.3;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
   color: var(--text);
 }
 
 .svc-desc {
-  font-size: 0.84rem;
+  font-size: var(--fs-body);
   font-weight: 400;
-  color: #666;
-  line-height: 1.72;
+  color: #4a4a4a;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
   flex: 1;
 }
 
@@ -78,13 +80,13 @@
 }
 
 .svc-tag {
-  font-size: 0.72rem;
+  font-size: var(--fs-micro);
   font-weight: 500;
   color: var(--accent);
   background: rgba(59,59,255,0.07);
   border-radius: 20px;
-  padding: 3px 10px;
-  letter-spacing: 0.1px;
+  padding: 4px 11px;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 1100px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }

@@ -44,9 +44,11 @@
 
 /* ── Meta ──────────────────────────────────────────────────────────────────── */
 .pc-meta {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 0.78rem; font-weight: 450; color: #999;
-  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-label); font-weight: 500;
+  color: #4a4a4a; letter-spacing: -0.005em;
+  margin-bottom: 18px;
 }
 .pc-meta-dot { opacity: 0.4; }
 
@@ -83,10 +85,10 @@
 
 .pc-title--featured {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -108,11 +110,17 @@
 
 .pc-title {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 1rem; font-weight: 700;
-  letter-spacing: -0.2px; line-height: 1.35;
+  font-size: 1.25rem; font-weight: 700;
+  letter-spacing: -0.025em; line-height: 1.25;
 }
 
-.pc-desc { font-size: 0.87rem; font-weight: 450; color: #666; line-height: 1.68; }
+.pc-desc {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: #4a4a4a;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    COMPACT
@@ -136,13 +144,14 @@
 
 .pc-title--compact {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 0.92rem; font-weight: 700;
-  letter-spacing: -0.2px;
+  font-size: 1.0625rem; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.3;
 }
 
 .pc-desc--compact {
-  font-size: 0.8rem; font-weight: 450;
-  color: #888; line-height: 1.5;
+  font-size: 0.9375rem; font-weight: 400;
+  color: #4a4a4a; line-height: 1.55;
+  letter-spacing: -0.005em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

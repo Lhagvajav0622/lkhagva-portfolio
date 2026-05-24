@@ -13,23 +13,23 @@
 .section-pill {
   display: inline-flex;
   align-items: center;
-  padding: 6px 14px;
+  padding: 7px 16px;
   background: var(--accent);
   color: white;
   border-radius: 30px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .section-title-serif {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+  font-size: var(--fs-section);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.05;
   letter-spacing: -0.035em;
   color: var(--text);
 }

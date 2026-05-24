@@ -1,12 +1,13 @@
 .pricing { background: var(--bg); }
 
 .pricing-sub {
-  font-size: 0.95rem;
+  font-size: var(--fs-body-lg);
   font-weight: 400;
-  color: #666;
-  max-width: 480px;
-  margin: 14px auto 0;
-  line-height: 1.8;
+  color: #4a4a4a;
+  max-width: 540px;
+  margin: 18px auto 0;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
   text-align: center;
 }
 
@@ -75,17 +76,17 @@
 
 .plan-name {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 1.35rem;
+  font-size: var(--fs-card-title-lg);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.15;
 }
 
 .plan-tagline {
-  font-size: 0.875rem;
+  font-size: var(--fs-body);
   font-weight: 400;
-  color: #888;
-  line-height: 1.55;
+  color: #4a4a4a;
+  line-height: 1.6;
   letter-spacing: -0.005em;
 }
 .plan-featured .plan-tagline { color: rgba(255,255,255,0.55); }
@@ -101,10 +102,10 @@
 
 .plan-amount-text {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: 1.35rem;
+  font-size: var(--fs-card-title);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 .plan-featured .plan-amount-text { color: white; }
 
@@ -140,11 +141,11 @@
 
 .plan-feature {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--fs-body);
   font-weight: 400;
   letter-spacing: -0.005em;
   line-height: 1.55;
-  color: #555;
+  color: #3a3a3a;
   display: flex;
   gap: 12px;
   align-items: flex-start;

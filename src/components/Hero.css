@@ -254,11 +254,11 @@
 
 .hero-title {
   font-family: 'Satoshi', 'Inter', sans-serif;
-  font-size: clamp(3rem, 5.6vw, 5.2rem);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin-bottom: 28px;
   color: var(--text);
 }
 
@@ -271,10 +271,13 @@
 }
 
 .hero-sub {
-  font-size: 1.05rem; font-weight: 400;
-  color: #555; max-width: 440px;
-  line-height: 1.65; letter-spacing: -0.005em;
-  margin-bottom: 36px;
+  font-size: var(--fs-body-lg);
+  font-weight: 400;
+  color: #4a4a4a;
+  max-width: 480px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  margin-bottom: 40px;
 }
 
 .hero-cta-wrap {
