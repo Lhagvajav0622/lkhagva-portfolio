@@ -103,8 +103,8 @@ export default function CustomCursor() {
       if (!el) { applyState('default'); return }
 
       if      (el.closest('[data-rbd-draggable-id]'))       applyState('drag')
-      else if (el.closest('[data-cursor-card]'))             applyState('card')
       else if (el.closest('button,a,.plan-cta,.hero-cta,.outline-btn,.insta-btn,.lang-btn,.hamburger,.ap-nav-item')) applyState('btn')
+      else if (el.closest('[data-cursor-card]'))             applyState('card')
       else if (el.closest('img,.about-circle,.proj-img-wrap,.cs-cover-img')) applyState('img')
       else if (el.closest('p,li,.tl-desc,.svc-desc,.about-bio,.plan-feature,.cs-body') && !el.closest('button,a')) applyState('text')
       else    applyState('default')

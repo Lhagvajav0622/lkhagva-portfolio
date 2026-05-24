@@ -13,7 +13,7 @@ function Tags({ tags = [] }) {
 
 function CTALink({ label = 'View Case Study', onClick }) {
   return (
-    <button className="outline-btn pc-cta" onClick={onClick}>
+    <button className="outline-btn pc-cta" onClick={e => { e.stopPropagation(); onClick?.(e) }}>
       <span className="btn-text">{label}</span>
       <span className="btn-arrow">↗</span>
     </button>
@@ -27,6 +27,8 @@ function FeaturedCard({ project, onClick }) {
   return (
     <motion.article
       className="pc pc--featured"
+      data-cursor-card
+      onClick={onClick}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -35,10 +37,8 @@ function FeaturedCard({ project, onClick }) {
     >
       <div
         className="pc-img pc-img--featured"
-        data-cursor-card
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onClick={onClick}
       >
         {project.image
           ? <motion.img src={project.image} alt={project.title}
@@ -90,6 +90,8 @@ function StandardCard({ project, onClick, delay = 0 }) {
     <motion.article
       ref={cardRef}
       className="pc pc--standard"
+      data-cursor-card
+      onClick={onClick}
       style={{ rotateX, rotateY, transformPerspective: 800 }}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -100,10 +102,8 @@ function StandardCard({ project, onClick, delay = 0 }) {
     >
       <div
         className="pc-img pc-img--standard"
-        data-cursor-card
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onClick={onClick}
       >
         {project.image
           ? <motion.img src={project.image} alt={project.title}
