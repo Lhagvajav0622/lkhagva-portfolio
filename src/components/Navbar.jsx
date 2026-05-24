@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useLang } from '../LangContext'
 import './Navbar.css'
 
@@ -6,6 +7,9 @@ const NAV_IDS = ['home', 'services', 'portfolio', 'about', 'process', 'pricing',
 
 export default function Navbar() {
   const { t, lang, setLang } = useLang()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/' || location.pathname === ''
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState('home')
@@ -50,6 +54,11 @@ export default function Navbar() {
   const scrollTo = (e, id) => {
     e.preventDefault()
     setMenuOpen(false)
+    if (!isHome) {
+      navigate('/')
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 120)
+      return
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 

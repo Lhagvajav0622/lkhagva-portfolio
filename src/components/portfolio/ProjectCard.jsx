@@ -1,7 +1,14 @@
 import { useState, useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { useLang } from '../../LangContext'
 import './ProjectCard.css'
+
+// Language-aware field accessor
+const pick = (project, key, lang) => {
+  if (lang === 'mn' && project[`${key}_mn`]) return project[`${key}_mn`]
+  return project[key]
+}
 
 function Tags({ tags = [] }) {
   return (
@@ -156,10 +163,18 @@ function CompactCard({ project, onClick, delay = 0 }) {
 // ── Unified export ────────────────────────────────────────────────────────────
 export default function ProjectCard({ project, delay = 0 }) {
   const navigate = useNavigate()
+  const { lang } = useLang()
   const goTo = () => navigate(`/project/${project.slug || project.id}`)
 
+  // Swap title/description with MN versions when language is mn
+  const localized = {
+    ...project,
+    title: pick(project, 'title', lang),
+    description: pick(project, 'description', lang),
+  }
+
   const variant = project.layout || 'standard'
-  if (variant === 'featured') return <FeaturedCard project={project} onClick={goTo} />
-  if (variant === 'compact')  return <CompactCard  project={project} onClick={goTo} delay={delay} />
-  return <StandardCard project={project} onClick={goTo} delay={delay} />
+  if (variant === 'featured') return <FeaturedCard project={localized} onClick={goTo} />
+  if (variant === 'compact')  return <CompactCard  project={localized} onClick={goTo} delay={delay} />
+  return <StandardCard project={localized} onClick={goTo} delay={delay} />
 }

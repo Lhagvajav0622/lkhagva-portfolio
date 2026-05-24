@@ -7,7 +7,10 @@ const EMPTY = {
   layout: 'standard', featured: false, status: 'draft', slug: '',
   client: '', date: '', services: '', liveUrl: '',
   overview: '', problem: '', outcome: '',
-  processSteps: [{ title: '', body: '' }],
+  // Mongolian translations (optional — falls back to English if empty)
+  title_mn: '', description_mn: '',
+  overview_mn: '', problem_mn: '', outcome_mn: '',
+  processSteps: [{ title: '', body: '', title_mn: '', body_mn: '' }],
   gallery: [],
 }
 
@@ -41,7 +44,7 @@ export default function ProjectForm({ project, onDone }) {
     setImgPct(null)
   }
 
-  const addStep    = () => set('processSteps', [...form.processSteps, { title: '', body: '' }])
+  const addStep    = () => set('processSteps', [...form.processSteps, { title: '', body: '', title_mn: '', body_mn: '' }])
   const removeStep = i  => set('processSteps', form.processSteps.filter((_, j) => j !== i))
   const updateStep = (i, k, v) => {
     const steps = [...form.processSteps]
@@ -85,7 +88,7 @@ export default function ProjectForm({ project, onDone }) {
 
         {/* ── Section: Basic info ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Basic Info</h3>
+          <h3 className="pf-section-title">Basic Info — English</h3>
           <div className="pf-grid-2">
             <div className="pf-field pf-field--full">
               <label>Title *</label>
@@ -102,6 +105,21 @@ export default function ProjectForm({ project, onDone }) {
             <div className="pf-field">
               <label>URL Slug</label>
               <input value={form.slug} onChange={e => set('slug', e.target.value)} placeholder="auto-generated from title" />
+            </div>
+          </div>
+        </div>
+
+        {/* ── Section: Mongolian translations ── */}
+        <div className="pf-section">
+          <h3 className="pf-section-title">Mongolian translations <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional — leave blank to use English)</span></h3>
+          <div className="pf-grid-2">
+            <div className="pf-field pf-field--full">
+              <label>Гарчиг (Title MN)</label>
+              <input value={form.title_mn || ''} onChange={e => set('title_mn', e.target.value)} placeholder="Төслийн нэр" />
+            </div>
+            <div className="pf-field pf-field--full">
+              <label>Богино тайлбар (Description MN)</label>
+              <textarea rows={3} value={form.description_mn || ''} onChange={e => set('description_mn', e.target.value)} placeholder="Картан дээр харагдах товч тайлбар" />
             </div>
           </div>
         </div>
@@ -195,9 +213,9 @@ export default function ProjectForm({ project, onDone }) {
           </div>
         </div>
 
-        {/* ── Section: Case study content ── */}
+        {/* ── Section: Case study content (English) ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Case Study Content</h3>
+          <h3 className="pf-section-title">Case Study Content — English</h3>
           <div className="pf-field pf-field--full">
             <label>Overview</label>
             <textarea rows={4} value={form.overview} onChange={e => set('overview', e.target.value)} placeholder="High-level project overview…" />
@@ -212,6 +230,23 @@ export default function ProjectForm({ project, onDone }) {
           </div>
         </div>
 
+        {/* ── Section: Case study content (Mongolian) ── */}
+        <div className="pf-section">
+          <h3 className="pf-section-title">Case Study Content — Mongolian <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional)</span></h3>
+          <div className="pf-field pf-field--full">
+            <label>Танилцуулга (Overview MN)</label>
+            <textarea rows={4} value={form.overview_mn || ''} onChange={e => set('overview_mn', e.target.value)} placeholder="Төслийн ерөнхий танилцуулга…" />
+          </div>
+          <div className="pf-field pf-field--full">
+            <label>Зорилго & Шийдвэр (Problem MN)</label>
+            <textarea rows={4} value={form.problem_mn || ''} onChange={e => set('problem_mn', e.target.value)} placeholder="Ямар асуудлыг шийдсэн бэ?…" />
+          </div>
+          <div className="pf-field pf-field--full">
+            <label>Үр дүн (Outcome MN)</label>
+            <textarea rows={4} value={form.outcome_mn || ''} onChange={e => set('outcome_mn', e.target.value)} placeholder="Эцсийн үр дүн юу байсан бэ?…" />
+          </div>
+        </div>
+
         {/* ── Section: Process steps ── */}
         <div className="pf-section">
           <div className="pf-section-row">
@@ -223,8 +258,10 @@ export default function ProjectForm({ project, onDone }) {
               <div key={i} className="pf-step">
                 <div className="pf-step-num">0{i + 1}</div>
                 <div className="pf-step-fields">
-                  <input value={step.title} onChange={e => updateStep(i, 'title', e.target.value)} placeholder="Step title" />
-                  <textarea rows={3} value={step.body} onChange={e => updateStep(i, 'body', e.target.value)} placeholder="Step description…" />
+                  <input value={step.title} onChange={e => updateStep(i, 'title', e.target.value)} placeholder="Step title (EN)" />
+                  <textarea rows={2} value={step.body} onChange={e => updateStep(i, 'body', e.target.value)} placeholder="Step description (EN)…" />
+                  <input value={step.title_mn || ''} onChange={e => updateStep(i, 'title_mn', e.target.value)} placeholder="Гарчиг (MN — optional)" />
+                  <textarea rows={2} value={step.body_mn || ''} onChange={e => updateStep(i, 'body_mn', e.target.value)} placeholder="Тайлбар (MN — optional)…" />
                 </div>
                 {form.processSteps.length > 1 && (
                   <button type="button" className="pf-step-remove" onClick={() => removeStep(i)}>×</button>
