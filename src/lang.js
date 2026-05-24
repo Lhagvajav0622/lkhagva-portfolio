@@ -21,12 +21,12 @@ export const translations = {
     services: {
       label: '✦ SERVICES',
       title: 'What I can do\nfor you.',
-      sub: 'From concept to shipping — I design and build digital products that look great and work even better.',
+      sub: 'From concept to shipping. I design and build digital products that look great and work even better.',
       items: [
         { title: 'UI/UX Design', desc: 'Intuitive interfaces backed by solid user research. Wireframes, prototypes, and pixel-perfect final screens.', tags: ['Figma', 'Framer', 'Prototyping'] },
         { title: 'Web Development', desc: 'Fast, accessible, and beautifully animated websites built with modern front-end technologies.', tags: ['React', 'Vite', 'Framer Motion'] },
-        { title: 'Mobile Design', desc: 'Native and cross-platform mobile app design — from flow architecture to polished high-fidelity screens.', tags: ['Flutter', 'iOS', 'Android'] },
-        { title: 'Brand Identity', desc: 'Visual systems that tell your story — logo, color palette, typography, and guidelines your team will love using.', tags: ['Logo', 'Typography', 'Style Guide'] },
+        { title: 'Mobile Design', desc: 'Native and cross-platform mobile app design. From flow architecture to polished high-fidelity screens.', tags: ['Flutter', 'iOS', 'Android'] },
+        { title: 'Brand Identity', desc: 'Visual systems that tell your story. Logo, color palette, typography, and guidelines your team will love using.', tags: ['Logo', 'Typography', 'Style Guide'] },
       ],
     },
     pricing: {
@@ -36,7 +36,7 @@ export const translations = {
       popular: '✦ MOST POPULAR',
       per: 'project',
       cta: 'Get Started',
-      note: 'Have a bigger or custom project? Let\'s talk — reach out via the contact form.',
+      note: 'Have a bigger or custom project? Reach out via the contact form.',
       plans: [
         {
           name: 'Custom',
@@ -79,16 +79,26 @@ export const translations = {
       ],
       stats: { customers: 'Сэтгэл ханасан харилцагч', years: 'Ажлын туршлага (жил)', projects: 'Амжилттай дууссан төсөл' }
     },
-    process: { label: '✦ ПРОЦЕСС', title: 'Миний ажлын арга барил\nбүтээмжид чиглэсэн.', tools: 'Өдөр тутам ашигладаг хэрэгслүүд:', steps: [ { title: 'Судалгаа & Санаа', desc: 'Брэнд, үзэгчид, зорилгыг ойлгосноор дизайны үндэс суурийг тавина.' }, { title: 'Концепц боловсруулах', desc: 'Судалгааг бүтэцтэй концепц болгон хувиргаж, таны алсын харааг тусгана.' }, { title: 'Прототип & Тест', desc: 'Интерактив прототип бүтээж, хэрэглэгчийн тест дээр үндэслэн сайжруулна.' }, { title: 'Эцсийн бүтээгдэхүүн', desc: 'Пикселийн нарийвчлалтайгаар дуусгаж, хөгжүүлэлтэд бэлэн файлуудыг хүргэнэ.' } ] },
+    process: {
+      label: '✦ ПРОЦЕСС',
+      title: 'Миний ажлын арга барил\nбүтээмжид чиглэсэн.',
+      tools: 'Өдөр тутам ашигладаг хэрэгслүүд:',
+      steps: [
+        { title: 'Research & Ideation', desc: 'Брэнд, үзэгчид, зорилгыг ойлгож дизайны үндэс суурийг тавина.' },
+        { title: 'Concept Development', desc: 'Судалгааг бүтэцтэй concept болгон хувиргаж, таны алсын харааг тусгана.' },
+        { title: 'Prototype & Test', desc: 'Interactive prototype бүтээж, user testing дээр үндэслэн сайжруулна.' },
+        { title: 'Final Product', desc: 'Pixel-perfect дуусгаж, development-ready файлуудыг хүргэнэ.' },
+      ],
+    },
     services: {
       label: '✦ ҮЙЛЧИЛГЭЭ',
       title: 'Танд юу хийж\nчадах вэ.',
       sub: 'Санаанаас эхлэн хүргэлт хүртэл харагдахад гоё, ашиглахад хялбар дижитал бүтээгдэхүүн дизайнлаж, хөгжүүлдэг.',
       items: [
         { title: 'UI/UX Дизайн', desc: 'Хэрэглэгчийн судалгаанд тулгуурласан intuitive design. Wireframe, prototype, pixel-perfect screens.', tags: ['Figma', 'Framer', 'Prototype'] },
-        { title: 'Веб Хөгжүүлэлт', desc: 'Орчин үеийн фронт-энд технологиор хурдан, хүртээмжтэй, гоёмсог анимацтай вебсайт.', tags: ['React', 'Vite', 'Framer Motion'] },
-        { title: 'Мобайл Дизайн', desc: 'Нэтив болон кросс-платформ мобайл апп дизайн — урсгал архитектурнаас өндөр нарийвчлалтай дэлгэц хүртэл.', tags: ['Flutter', 'iOS', 'Android'] },
-        { title: 'Брэнд Байгуулах', desc: 'Таны өгүүллэгийг илэрхийлэх визуал систем — лого, өнгийн палитр, бичвэр, дүрэм журам.', tags: ['Лого', 'Бичвэр', 'Загвар'] },
+        { title: 'Web Development', desc: 'Орчин үеийн frontend технологиор хурдан, responsive, гоёмсог animation-тай вебсайт.', tags: ['React', 'Vite', 'Framer Motion'] },
+        { title: 'Mobile Design', desc: 'Native болон cross-platform мобайл апп дизайн. User flow-аас high-fidelity дэлгэц хүртэл.', tags: ['Flutter', 'iOS', 'Android'] },
+        { title: 'Branding', desc: 'Таны өгүүллэгийг илэрхийлэх visual system. Logo, color palette, typography, guidelines.', tags: ['Logo', 'Typography', 'Design System'] },
       ],
     },
     pricing: {
@@ -98,7 +108,7 @@ export const translations = {
       popular: '✦ ХАМГИЙН АЛДАРТАЙ',
       per: 'төсөл',
       cta: 'Эхлэх',
-      note: 'Томоохон буюу захиалгат төсөл байна уу? Ярилцацгаая — холбоо барих хэсгээр бичнэ үү.',
+      note: 'Томоохон буюу захиалгат төсөл байна уу? Холбоо барих хэсгээр бичээрэй.',
       plans: [
         {
           name: 'Захиалгат',
