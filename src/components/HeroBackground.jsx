@@ -98,7 +98,7 @@ export default function HeroBackground() {
     // Mouse state
     const mouse    = { x: -999, y: -999, inside: false }
     const lerped   = { x: -999, y: -999 }   // for spotlight
-    const lerpDot  = { x: -999, y: -999 }   // for grid repulsion — slightly faster
+    const lerpDot  = { x: -999, y: -999 }   // for grid repulsion, slightly faster
     const parallax = { x: 0, y: 0 }         // for shape layer
 
     // ── Grid ────────────────────────────────────────────────────────────────

@@ -7,7 +7,7 @@ const EMPTY = {
   layout: 'standard', featured: false, status: 'draft', slug: '',
   client: '', date: '', services: '', liveUrl: '',
   overview: '', problem: '', outcome: '',
-  // Mongolian translations (optional — falls back to English if empty)
+  // Mongolian translations (optional, falls back to English if empty)
   title_mn: '', description_mn: '',
   overview_mn: '', problem_mn: '', outcome_mn: '',
   processSteps: [{ title: '', body: '', title_mn: '', body_mn: '' }],
@@ -40,7 +40,7 @@ export default function ProjectForm({ project, onDone }) {
     try {
       const url = await uploadProjectImage(file, setImgPct)
       set('image', url)
-    } catch { alert('Image upload failed — check Firebase Storage rules.') }
+    } catch { alert('Image upload failed. Check Firebase Storage rules.') }
     setImgPct(null)
   }
 
@@ -88,7 +88,7 @@ export default function ProjectForm({ project, onDone }) {
 
         {/* ── Section: Basic info ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Basic Info — English</h3>
+          <h3 className="pf-section-title">Basic Info (English)</h3>
           <div className="pf-grid-2">
             <div className="pf-field pf-field--full">
               <label>Title *</label>
@@ -111,7 +111,7 @@ export default function ProjectForm({ project, onDone }) {
 
         {/* ── Section: Mongolian translations ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Mongolian translations <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional — leave blank to use English)</span></h3>
+          <h3 className="pf-section-title">Mongolian translations <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional, leave blank to use English)</span></h3>
           <div className="pf-grid-2">
             <div className="pf-field pf-field--full">
               <label>Гарчиг (Title MN)</label>
@@ -178,7 +178,7 @@ export default function ProjectForm({ project, onDone }) {
               : <div className="pf-upload-placeholder">
                   <span className="pf-upload-icon">↑</span>
                   <span>Click to upload image</span>
-                  <span className="pf-upload-hint">PNG, JPG, WebP — max 5 MB</span>
+                  <span className="pf-upload-hint">PNG, JPG, WebP (max 5 MB)</span>
                 </div>
             }
             {imgPct !== null && (
@@ -215,7 +215,7 @@ export default function ProjectForm({ project, onDone }) {
 
         {/* ── Section: Case study content (English) ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Case Study Content — English</h3>
+          <h3 className="pf-section-title">Case Study Content (English)</h3>
           <div className="pf-field pf-field--full">
             <label>Overview</label>
             <textarea rows={4} value={form.overview} onChange={e => set('overview', e.target.value)} placeholder="High-level project overview…" />
@@ -232,7 +232,7 @@ export default function ProjectForm({ project, onDone }) {
 
         {/* ── Section: Case study content (Mongolian) ── */}
         <div className="pf-section">
-          <h3 className="pf-section-title">Case Study Content — Mongolian <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional)</span></h3>
+          <h3 className="pf-section-title">Case Study Content (Mongolian) <span style={{ fontSize: '0.75rem', fontWeight: 400, color: '#888' }}>(optional)</span></h3>
           <div className="pf-field pf-field--full">
             <label>Танилцуулга (Overview MN)</label>
             <textarea rows={4} value={form.overview_mn || ''} onChange={e => set('overview_mn', e.target.value)} placeholder="Төслийн ерөнхий танилцуулга…" />
@@ -260,8 +260,8 @@ export default function ProjectForm({ project, onDone }) {
                 <div className="pf-step-fields">
                   <input value={step.title} onChange={e => updateStep(i, 'title', e.target.value)} placeholder="Step title (EN)" />
                   <textarea rows={2} value={step.body} onChange={e => updateStep(i, 'body', e.target.value)} placeholder="Step description (EN)…" />
-                  <input value={step.title_mn || ''} onChange={e => updateStep(i, 'title_mn', e.target.value)} placeholder="Гарчиг (MN — optional)" />
-                  <textarea rows={2} value={step.body_mn || ''} onChange={e => updateStep(i, 'body_mn', e.target.value)} placeholder="Тайлбар (MN — optional)…" />
+                  <input value={step.title_mn || ''} onChange={e => updateStep(i, 'title_mn', e.target.value)} placeholder="Гарчиг (MN, optional)" />
+                  <textarea rows={2} value={step.body_mn || ''} onChange={e => updateStep(i, 'body_mn', e.target.value)} placeholder="Тайлбар (MN, optional)…" />
                 </div>
                 {form.processSteps.length > 1 && (
                   <button type="button" className="pf-step-remove" onClick={() => removeStep(i)}>×</button>

@@ -247,13 +247,13 @@ export default function CustomCursor() {
 
   return (
     <div className="cur-root" aria-hidden="true">
-      {/* Ghost trail — slowest, fades out */}
+      {/* Ghost trail, slowest, fades out */}
       <div className="cur-trail" ref={trailRef} />
       {/* Outer morphing ring */}
       <div className="cur-ring" data-state="default" ref={ringRef}>
         <span className="cur-label" ref={labelRef} />
       </div>
-      {/* Sharp center dot — fastest */}
+      {/* Sharp center dot, fastest */}
       <div className="cur-dot" ref={dotRef} />
     </div>
   )

@@ -27,7 +27,7 @@ function CTALink({ label = 'View Case Study', onClick }) {
   )
 }
 
-// ── Featured card — full-width horizontal ────────────────────────────────────
+// ── Featured card (full-width horizontal) ───────────────────────────────────
 function FeaturedCard({ project, onClick }) {
   const [hovered, setHovered] = useState(false)
 
@@ -74,7 +74,7 @@ function FeaturedCard({ project, onClick }) {
   )
 }
 
-// ── Standard card — vertical, 3D tilt ───────────────────────────────────────
+// ── Standard card (vertical, 3D tilt) ───────────────────────────────────────
 function StandardCard({ project, onClick, delay = 0 }) {
   const [hovered, setHovered] = useState(false)
   const cardRef = useRef(null)
@@ -131,7 +131,7 @@ function StandardCard({ project, onClick, delay = 0 }) {
   )
 }
 
-// ── Compact card — horizontal mini ──────────────────────────────────────────
+// ── Compact card (horizontal mini) ──────────────────────────────────────────
 function CompactCard({ project, onClick, delay = 0 }) {
   return (
     <motion.article

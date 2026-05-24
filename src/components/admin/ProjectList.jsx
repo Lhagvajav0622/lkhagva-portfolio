@@ -28,7 +28,7 @@ export default function ProjectList({ projects, onEdit, onAdd }) {
       <div className="pl-header">
         <div>
           <h2 className="pl-title">Projects</h2>
-          <p className="pl-sub">{projects.length} total — drag to reorder</p>
+          <p className="pl-sub">{projects.length} total (drag to reorder)</p>
         </div>
         <button className="admin-btn admin-btn--primary" onClick={onAdd}>+ New Project</button>
       </div>
