@@ -63,7 +63,7 @@ export default function Hero() {
         <div className="hero-photo-wrap" ref={wrapRef}>
           <div className="hero-arch">
             <div className="hero-arch-img">
-              <img src="/photo.jpg" alt="Lkhagvajav" onError={e => { e.target.style.display = 'none' }} />
+              <img src={`${import.meta.env.BASE_URL}photo.jpg`} alt="Lkhagvajav" onError={e => { e.target.style.display = 'none' }} />
               <div className="hero-arch-placeholder">L</div>
             </div>
           </div>

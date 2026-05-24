@@ -39,7 +39,7 @@ export default function About() {
         <div className="about-top reveal-fade-up" ref={topRef}>
           <div className="about-photo-wrap">
             <div className="about-circle">
-              <img src="/photo.jpg" alt="Lkhagvajav" onError={e => { e.target.style.display = 'none' }} />
+              <img src={`${import.meta.env.BASE_URL}photo.jpg`} alt="Lkhagvajav" onError={e => { e.target.style.display = 'none' }} />
               <div className="about-circle-ph">L</div>
             </div>
             <RotatingBadge />
