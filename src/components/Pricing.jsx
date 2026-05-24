@@ -32,9 +32,11 @@ export default function Pricing() {
                 <h3 className="plan-name">{plan.name}</h3>
                 <p className="plan-tagline">{plan.tagline}</p>
               </div>
-              <div className="plan-price">
-                <span className="plan-currency">$</span>
-                <span className="plan-amount">{plan.price}</span>
+              <div className={`plan-price${plan.priceText ? ' plan-price--text' : ''}`}>
+                <span className="plan-currency">{plan.currency || '$'}</span>
+                {plan.priceText
+                  ? <span className="plan-amount-text">{plan.priceText}</span>
+                  : <span className="plan-amount">{plan.price}</span>}
                 <span className="plan-period">/{p.per}</span>
               </div>
               <ul className="plan-features">

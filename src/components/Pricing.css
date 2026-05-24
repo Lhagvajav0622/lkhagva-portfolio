@@ -90,8 +90,20 @@
 .plan-price {
   display: flex;
   align-items: baseline;
-  gap: 2px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
+
+.plan-price--text { align-items: center; }
+
+.plan-amount-text {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.plan-featured .plan-amount-text { color: white; }
 
 .plan-currency {
   font-size: 1.1rem;
