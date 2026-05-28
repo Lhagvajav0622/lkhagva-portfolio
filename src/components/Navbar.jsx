@@ -98,7 +98,7 @@ export default function Navbar() {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             {lang === 'en' ? 'English' : 'Монгол'}
           </button>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="insta-btn">
+          <a href="https://www.instagram.com/elizyyyyyy/" target="_blank" rel="noreferrer" className="insta-btn">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <button className="hamburger" onClick={() => setMenuOpen(o => !o)}>
