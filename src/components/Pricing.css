@@ -62,7 +62,7 @@
   transform: translateX(-50%);
   background: var(--accent);
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -75,7 +75,7 @@
 .plan-top { display: flex; flex-direction: column; gap: 6px; }
 
 .plan-name {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: var(--fs-card-title-lg);
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -101,7 +101,7 @@
 .plan-price--text { align-items: center; }
 
 .plan-amount-text {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: var(--fs-card-title);
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -117,7 +117,7 @@
 .plan-featured .plan-currency { color: rgba(255,255,255,0.5); }
 
 .plan-amount {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -3px;
@@ -140,7 +140,7 @@
 }
 
 .plan-feature {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: var(--fs-body);
   font-weight: 400;
   letter-spacing: -0.005em;
@@ -170,7 +170,7 @@
   border-radius: 100px;
   border: 1.5px solid rgba(0,0,0,0.15);
   background: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);

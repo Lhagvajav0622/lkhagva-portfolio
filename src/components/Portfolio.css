@@ -100,7 +100,7 @@
 .proj-info { padding: 0 4px; }
 
 .proj-title {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
