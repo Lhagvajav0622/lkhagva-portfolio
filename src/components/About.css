@@ -30,7 +30,7 @@
 .about-circle-ph {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 5rem; color: rgba(0,0,0,0.12);
 }
 .about-circle img + .about-circle-ph { display: none; }
@@ -82,7 +82,7 @@
 }
 
 .exp-heading {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.875rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -116,7 +116,7 @@
 .tl-dot { width: 12px; height: 12px; border-radius: 50%; }
 
 .tl-role {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-card-title);
   font-weight: 700;
   margin-bottom: 6px;
@@ -162,7 +162,7 @@
 [data-stat].revealed { opacity: 1; transform: translateY(0); }
 
 .stat-num {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 3.25rem;
   font-weight: 800;
   line-height: 1;

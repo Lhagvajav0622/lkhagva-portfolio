@@ -75,7 +75,7 @@
 .plan-top { display: flex; flex-direction: column; gap: 6px; }
 
 .plan-name {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-card-title-lg);
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -101,7 +101,7 @@
 .plan-price--text { align-items: center; }
 
 .plan-amount-text {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-card-title);
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -117,7 +117,7 @@
 .plan-featured .plan-currency { color: rgba(255,255,255,0.5); }
 
 .plan-amount {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -3px;

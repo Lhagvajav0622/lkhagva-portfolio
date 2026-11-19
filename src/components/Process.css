@@ -49,7 +49,7 @@
 }
 
 .process-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.25rem;
   font-weight: 700;
   color: white;

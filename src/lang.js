@@ -2,7 +2,7 @@ export const translations = {
   en: {
     nav: { home: 'Home', services: 'Services', about: 'About', portfolio: 'Portfolio', process: 'Process', pricing: 'Pricing', contact: 'Contact' },
     hero: { badge: '✦ HELLO!', title: "I'm Lkhagvajav, a\nUI/UX designer.", sub: 'Creating meaningful digital experiences through thoughtful design and user-centered thinking.', cta: 'See My Works', available: 'I AM AVAILABLE · FOR FREELANCE · ' },
-    portfolio: { label: '★ MY WORKS', title: 'Check out some of our awesome\nprojects with creative ideas.', seeAll: 'See All Works', viewCase: 'View Case Study', viewMore: 'VIEW\nMORE' },
+    portfolio: { label: '★ MY WORKS', title: 'Check out some of our awesome\nprojects with creative ideas.', seeAll: 'See All Works', viewCase: 'View Case Study', viewMore: 'VIEW\nMORE', featured: 'Featured', showLess: 'Show less', moreProjects: 'More projects' },
     about: {
       label: '✦ ABOUT', title: 'More about me',
       bio1: "I'm Lkhagvajav, a UI/UX design student at UFE Tech and a certified Google UX Designer (Coursera).",
@@ -64,7 +64,7 @@ export const translations = {
   mn: {
     nav: { home: 'Нүүр', services: 'Үйлчилгээ', about: 'Миний тухай', portfolio: 'Портфолио', process: 'Процесс', pricing: 'Үнэ', contact: 'Холбоо барих' },
     hero: { badge: '✦ САЙН УУ!', title: "Намайг Лхагважав гэдэг,\nUI/UX дизайнер.", sub: 'Хэрэглэгч төвтэй сэтгэлгээгээр утга учиртай дижитал туршлага бүтээхийг зорьдог.', cta: 'Бүтээлүүдийг үзэх', available: 'БИ ЧӨЛӨӨТ АЖИЛД · БЭЛЭН · ' },
-    portfolio: { label: '★ БҮТЭЭЛҮҮД', title: 'Хийсэн ажлуудаас', seeAll: 'Бүгдийг үзэх', viewCase: 'Дэлгэрэнгүй үзэх', viewMore: 'ҮЗЭХ' },
+    portfolio: { label: '★ БҮТЭЭЛҮҮД', title: 'Хийсэн ажлуудаас', seeAll: 'Бүгдийг үзэх', viewCase: 'Дэлгэрэнгүй үзэх', viewMore: 'ҮЗЭХ', featured: 'Онцлох', showLess: 'Хураах', moreProjects: 'Бусад төслүүд' },
     about: {
       label: '✦ МИНИЙ ТУХАЙ', title: 'Дэлгэрэнгүй танилцуулга',
       bio1: 'Би Лхагважав, UFE Tech-д UI/UX дизайн судалж буй оюутан бөгөөд Google UX Дизайны гэрчилгээтэй (Coursera).',

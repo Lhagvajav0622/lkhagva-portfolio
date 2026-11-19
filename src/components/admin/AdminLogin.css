@@ -26,14 +26,14 @@
 }
 
 .al-logo {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 2rem; font-weight: 800;
   color: var(--accent);
   margin-bottom: 16px;
 }
 
 .al-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.4rem; font-weight: 800;
   margin-bottom: 8px;
 }
@@ -62,7 +62,7 @@
   padding: 13px;
   background: var(--accent); color: white;
   border: none; border-radius: 10px;
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 0.95rem; font-weight: 700;
   transition: opacity 0.2s, transform 0.2s;
 }

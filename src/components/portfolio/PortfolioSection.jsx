@@ -74,7 +74,7 @@ export default function PortfolioSection() {
                   <div className="ps-layout">
                     {compacts.length > 0 && (
                       <div className="ps-compact-section">
-                        <p className="ps-compact-label">More projects</p>
+                        <p className="ps-compact-label">{t.portfolio.moreProjects}</p>
                         <div className="ps-compact-list">
                           {compacts.map((p, i) => (
                             <ProjectCard key={p.id} project={p} delay={i * 0.08} />
@@ -102,7 +102,7 @@ export default function PortfolioSection() {
               className="outline-btn"
               onClick={() => setExpanded(e => !e)}
             >
-              <span className="btn-text">{expanded ? 'Show less' : t.portfolio.seeAll}</span>
+              <span className="btn-text">{expanded ? t.portfolio.showLess : t.portfolio.seeAll}</span>
               <span className="btn-arrow">{expanded ? '↑' : '↓'}</span>
             </button>
           </motion.div>

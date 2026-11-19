@@ -26,7 +26,7 @@
 }
 
 .section-title-serif {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-section);
   font-weight: 700;
   line-height: 1.05;

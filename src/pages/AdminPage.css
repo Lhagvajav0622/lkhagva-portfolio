@@ -20,7 +20,7 @@
 }
 
 .ap-logo {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.7rem; font-weight: 800;
   color: var(--accent);
   margin-bottom: 36px;

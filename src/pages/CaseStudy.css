@@ -25,7 +25,7 @@
 .cs-back-arrow { font-size: 1rem; }
 
 .cs-nav-logo {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.5rem; font-weight: 800;
 }
 
@@ -61,7 +61,7 @@
 .cs-meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
 
 .cs-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-section);
   font-weight: 800;
   letter-spacing: -0.035em;
@@ -177,7 +177,7 @@
 }
 
 .cs-process-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: var(--fs-card-title);
   font-weight: 700;
   letter-spacing: -0.025em;

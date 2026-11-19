@@ -5,7 +5,7 @@
 }
 
 .pl-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px;
 }
 
@@ -56,7 +56,7 @@
 .pl-info { flex: 1; min-width: 0; }
 
 .pl-item-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 0.92rem; font-weight: 700;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   margin-bottom: 6px;

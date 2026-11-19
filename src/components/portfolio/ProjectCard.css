@@ -85,7 +85,7 @@
 .pc-body--featured { display: flex; flex-direction: column; gap: 12px; }
 
 .pc-title--featured {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: clamp(1.75rem, 2.6vw, 2.25rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -111,7 +111,7 @@
 .pc-body { display: flex; flex-direction: column; gap: 10px; padding: 0 2px; }
 
 .pc-title {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.25rem; font-weight: 700;
   letter-spacing: -0.025em; line-height: 1.25;
 }
@@ -145,7 +145,7 @@
 .pc-body--compact { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 
 .pc-title--compact {
-  font-family: var(--font);
+  font-family: var(--font-head);
   font-size: 1.0625rem; font-weight: 700;
   letter-spacing: -0.02em; line-height: 1.3;
 }

@@ -18,7 +18,7 @@ function Tags({ tags = [] }) {
   )
 }
 
-function CTALink({ label = 'View Case Study', onClick }) {
+function CTALink({ label, onClick }) {
   return (
     <button className="outline-btn pc-cta" onClick={e => { e.stopPropagation(); onClick?.(e) }}>
       <span className="btn-text">{label}</span>
@@ -28,7 +28,7 @@ function CTALink({ label = 'View Case Study', onClick }) {
 }
 
 // ── Featured card (full-width horizontal) ───────────────────────────────────
-function FeaturedCard({ project, onClick }) {
+function FeaturedCard({ project, onClick, t }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -54,7 +54,7 @@ function FeaturedCard({ project, onClick }) {
           : <div className="pc-img-fallback" style={{ background: project.color || '#ddd' }} />
         }
         <div className={`pc-overlay${hovered ? ' visible' : ''}`} />
-        {project.featured && <span className="pc-featured-badge">Featured</span>}
+        {project.featured && <span className="pc-featured-badge">{t.portfolio.featured}</span>}
       </div>
 
       <div className="pc-body pc-body--featured">
@@ -68,14 +68,14 @@ function FeaturedCard({ project, onClick }) {
             {project.services && <><span className="pc-meta-dot">·</span><span>{project.services}</span></>}
           </div>
         )}
-        <CTALink onClick={onClick} />
+        <CTALink label={t.portfolio.viewCase} onClick={onClick} />
       </div>
     </motion.article>
   )
 }
 
 // ── Standard card (vertical, 3D tilt) ───────────────────────────────────────
-function StandardCard({ project, onClick, delay = 0 }) {
+function StandardCard({ project, onClick, delay = 0, t }) {
   const [hovered, setHovered] = useState(false)
   const cardRef = useRef(null)
 
@@ -125,7 +125,7 @@ function StandardCard({ project, onClick, delay = 0 }) {
         <Tags tags={project.tags} />
         <h3 className="pc-title">{project.title}</h3>
         <p className="pc-desc">{project.description}</p>
-        <CTALink onClick={onClick} />
+        <CTALink label={t.portfolio.viewCase} onClick={onClick} />
       </div>
     </motion.article>
   )
@@ -163,7 +163,7 @@ function CompactCard({ project, onClick, delay = 0 }) {
 // ── Unified export ────────────────────────────────────────────────────────────
 export default function ProjectCard({ project, delay = 0 }) {
   const navigate = useNavigate()
-  const { lang } = useLang()
+  const { lang, t } = useLang()
   const goTo = () => navigate(`/project/${project.slug || project.id}`)
 
   // Swap title/description with MN versions when language is mn
@@ -171,10 +171,12 @@ export default function ProjectCard({ project, delay = 0 }) {
     ...project,
     title: pick(project, 'title', lang),
     description: pick(project, 'description', lang),
+    client: pick(project, 'client', lang),
+    services: pick(project, 'services', lang),
   }
 
   const variant = project.layout || 'standard'
-  if (variant === 'featured') return <FeaturedCard project={localized} onClick={goTo} />
+  if (variant === 'featured') return <FeaturedCard project={localized} onClick={goTo} t={t} />
   if (variant === 'compact')  return <CompactCard  project={localized} onClick={goTo} delay={delay} />
-  return <StandardCard project={localized} onClick={goTo} delay={delay} />
+  return <StandardCard project={localized} onClick={goTo} delay={delay} t={t} />
 }
