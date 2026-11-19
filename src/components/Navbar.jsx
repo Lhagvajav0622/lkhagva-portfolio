@@ -23,33 +23,57 @@ export default function Navbar() {
     return () => clearTimeout(t)
   }, [])
 
-  // Scroll shadow + active section tracking
+  // Scroll shadow + active section tracking.
+  // The active section is the last one whose top has passed the line just
+  // below the navbar; at the very bottom of the page the last section wins,
+  // since a short final section can never reach that line.
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
-      for (let i = NAV_IDS.length - 1; i >= 0; i--) {
-        const el = document.getElementById(NAV_IDS[i])
-        if (el && el.getBoundingClientRect().top <= 100) {
-          setActive(NAV_IDS[i])
-          return
-        }
-      }
-      setActive('home')
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+      if (!isHome) { setActive(null); return }
 
-  // Move indicator underline to active link
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4
+      const sections = NAV_IDS
+        .map(id => document.getElementById(id))
+        .filter(Boolean)
+        .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)
+
+      if (atBottom && sections.length) { setActive(sections[sections.length - 1].id); return }
+
+      const line = window.innerHeight * 0.35
+      let current = 'home'
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= line) current = el.id
+      }
+      setActive(current)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [isHome])
+
+  // Move indicator underline to the active link. Re-measure when the
+  // language changes (labels change width), on resize and once fonts load.
   useEffect(() => {
-    const activeEl = linksRef.current[active]
-    const indicator = indicatorRef.current
-    if (!activeEl || !indicator) return
-    const rect = activeEl.getBoundingClientRect()
-    const parentRect = activeEl.closest('.nav-links').getBoundingClientRect()
-    indicator.style.left = `${rect.left - parentRect.left}px`
-    indicator.style.width = `${rect.width}px`
-  }, [active])
+    const place = () => {
+      const indicator = indicatorRef.current
+      const activeEl = active && linksRef.current[active]
+      if (!indicator) return
+      if (!activeEl) { indicator.style.width = '0px'; return }
+      const rect = activeEl.getBoundingClientRect()
+      const parentRect = activeEl.closest('.nav-links').getBoundingClientRect()
+      indicator.style.left = `${rect.left - parentRect.left}px`
+      indicator.style.width = `${rect.width}px`
+    }
+    place()
+    document.fonts?.ready.then(place)
+    window.addEventListener('resize', place)
+    return () => window.removeEventListener('resize', place)
+  }, [active, lang])
 
   const scrollTo = (e, id) => {
     e.preventDefault()
@@ -65,8 +89,8 @@ export default function Navbar() {
   const navItems = [
     { id: 'home', label: t.nav.home },
     { id: 'services', label: t.nav.services },
-    { id: 'about', label: t.nav.about },
     { id: 'portfolio', label: t.nav.portfolio },
+    { id: 'about', label: t.nav.about },
     { id: 'process', label: t.nav.process },
     { id: 'pricing', label: t.nav.pricing },
     { id: 'contact', label: t.nav.contact },
